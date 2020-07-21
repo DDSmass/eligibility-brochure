@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Guide to the DDS Eligibility Process</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.js"></script>
+    <script src="js/northeast.js"></script>
+    <script src="js/southeast.js"></script>
+    <script src="js/metro.js"></script>
+    <script src="js/centralwest.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="titleText">Your Guide to the DDS Eligibility Process</h1>
+        <p class="navText"><a href="https://www.mass.gov/lists/dds-eligibility-forms" target="_blank"> Go to the DDS Eligibility Application</a><span class="greenArrow">></span></p>
+      </div>
+      <div class="body">
+        <h4 class="headerText">Mission Statement: The Department is dedicated to creating, in partnership with others, innovative and genuine opportunities for individuals with intellectual disabilities to participate fully and meaningfully in, and contribute to, their communities as valued members.</h4>
+        <div class="divider"></div>
+        <div class="info">
+          <h2 class="infoTitle">Overview</h2>
+          <p>To access DDS services, you must apply for eligibility. Once eligibility has been determined, you may get DDS services.</p>
+          <p>Applying for eligibility is a choice and we believe that it is important for applicants to fully understand the criteria for eligibility as well as the type of documentation that is required to enable DDS to make such an important decision. Therefore, included in the new application are the criteria for eligibility and explicit instructions about the necessary documentation.</p>
+          <p>Another important component is legal authorization to proceed with the process. Applicants must give their written permission so that DDS can proceed with the eligibility process. This does not mean that an applicant cannot get help from a family member, friend, or agency. However if the applicant chooses to have someone assist them, they will also need to authorize that by signing a permission form.</p>
+          <p>This permission is required if the applicant wants DDS to be able to communicate directly with this person on their behalf. These authorizations are now a vital part of the new application form.</p>
+          <p>After a complete application has been received by the Regional Eligibility Team, applicants can expect to be contacted by a Regional Eligibility Team member to schedule a face-to-face meeting.</p>
+        </div>
+        <div class="info">
+          <h2 class="infoTitle">Eligibility Criteria</h2>
+          <h3 class="infoSubHead">Adult Eligibilty Requirements</h3>
+          <ol>
+            <li>Persons who are 22 years of age or older are eligible for Intellectual Disability Supports provided, purchased, or arranged by the Department if the person:
+              <ol type="a">
+                <li>is domiciled in the Commonwealth; and</li>
+                <li>is a person with intellectual disability as defined in <a href="https://www.mass.gov/doc/115-cmr-2-definitions/download">115 CMR 2.01: Definitions</a>.</li>
+              </ol>
+            </li>
+            <li>Persons  who  are  22  years  of  age  or  older  are  eligible  for  Community  Developmental  Disability Supports provided, purchased or arranged by the department if the person:
+              <ol type="a">
+                <li>is domiciled in the commonwealth; and</li>
+                <li>is a person with Developmental Disability (Autism Spectrum Disorder, Prader-Willi Syndrome or Smith-Magenis Syndrome) as defined in 115 CMR 2.01:  Definitions; and</li>
+                <li>does not have an intellectual disability as defined in <a href="https://www.mass.gov/doc/115-cmr-2-definitions/download">115 CMR 2.01:  Definitions</a>.</li>
+              </ol>
+            </li>
+          </ol>
+          <p><a href="https://www.mass.gov/doc/115-cmr-6-eligibility-individual-support-planning-and-appeals/download#%5B%7B%22num%22%3A3%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22Fit%22%7D%5D" target="_blank">Learn more</a></p>
+          <h3 class="infoSubHead">Eligibility for Children's Supports</h3>
+            <ol>
+              <li>Persons  who  are  younger  than  22  years  of  age  may  be  eligible  for  Children's  Supports  provided, purchased, or arranged by the Department if the person:
+                <ol type="a">
+                  <li>is domiciled in the Commonwealth; and</li>
+                  <li>for persons who are five through 22 years of age, either:
+                    <ol>
+                      <li>
+                        have a severe chronic disability that:
+                        <ol type="a">
+                          <li>is  attributable  to  a  mental  or  physical  impairment  resulting  from  Intellectual  Disability, Autism Spectrum Disorder, Smith-Magenis Syndrome or Prader-Willi Syndrome;</li>
+                          <li>is likely to continue indefinitely;</li>
+                          <li>results in substantial functional limitations; or</li>
+                        </ol></li>
+                      <li>have a verified diagnosis of Intellectual Disability or a closely related developmental condition that results in substantial functional limitations, or</li>
+                    </ol>
+                  </li>
+                  <li>for  persons  from  birth  to  age  five  a  substantial  developmental  delay  or  specific  congenital  or  acquired  condition  with  a  high  probability  of  resulting  in  a  developmental  disability if services are not provided.</li>
+              </ol></li>
+            </ol>
+            <p><a href="https://www.mass.gov/doc/115-cmr-6-eligibility-individual-support-planning-and-appeals/download#%5B%7B%22num%22%3A5%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22Fit%22%7D%5D" target="_blank">Learn more</a></p>
+        </div>
+        <div class="sectionIntro">
+          <h1>Select your region</h1>
+        </div>
+        <div class="buttons" id="regionButtons">
+          <button type="button" onclick="northeastInfo()" onmouseover="neMouseover()" onmouseout="normalStyle()">Northeast</button>
+          <button type="button" onclick="southeastInfo()" onmouseover="seMouseover()" onmouseout="normalStyle()">Southeast</button>
+          <button type="button" onclick="metroInfo()" onmouseover="meMouseover()" onmouseout="normalStyle()">Metro</button>
+          <button type="button" onclick="centralInfo()" onmouseover="cwMouseover()" onmouseout="normalStyle()">Central/West</button>
+        </div>
+        <div class="mapTool">
+          <a name="goTo"></a>
+          <div class="mapColumn map" id="regionsMap"></div>
+          <div class="mapColumn mapAside">
+            <p class="mapIntro">Learn more about...</p>
+            <button type="button" class="mapButton" id="aoButton" onclick="selectAreaOffices()">Area Office Locations</button>sd
+            <button type="button" class="mapButton" id="fsButton" onclick="selectFamilySupport()">Family Support Centers</button>
+            <h3 class="errorMessage" id="selectRegion">Please select a region from the menu above</h3>
+          </div>
+        </div>
+        <div class="mapCaption">
+          <div class="officeInfo" id="neInfo"><h4>Northeast Region: </h4><p>Regional Eligibility Coordinator | Hogan Regional Center | PO Box A | Hathorne, MA 01937<p><br><i>Intake Referral Number:</i> 978-774-5000 ext. 850 | <i>Fax Number:</i> 978-739-0420 </div>
+          <div class="officeInfo" id="seInfo"><h4>Southeast Region: </h4><p>Regional Eligibility Coordinator | 151 Campanelli Drive, Suite B | Middleboro, MA 02346<p><br><i>Intake Referral Number:</i> 978-774-5000 ext. 850 | <i>Fax Number:</i> 978-739-0420 </div>
+          <div class="officeInfo" id="meInfo"><h4>Metro Region: </h4><p>Regional Eligibility Coordinator | 411 Waverley Oaks Road, Suite 304 | Waltham, MA 02452Intake Referral <p><br><i>Intake Referral Number:</i> 978-774-5000 ext. 850 | <i>Fax Number:</i> 978-739-0420 </div>
+          <div class="officeInfo" id="cwInfo"><h4>Central/West Region: </h4><p>Regional Eligibility Coordinator | Central West Region | 140 High St. Suite 301 | Springfield, MA 01105<p><br><i>Intake Referral Number:</i> 13-205-0940 | <i>Fax Number:</i> 413-205-1608 </div>
+        </div>
+        <div class="infoBox">
+          <div id="areaOffice">
+            <h2 class="infoTitle">Area Offices</h2>
+            <div class="areaOfficeInfo" id="neAreaOffice">
+              <p><i>Please direct all support- and services-related questions to your local area office listed below. All supports are subject to funding and availability.</i></p>
+              <h3>Central Middlesex Area Office</h3>
+              <i>35 Nagog Park, Suite 2000 | Acton, MA  01720 | (978) 206-2050</i>
+              <p><b>Serves the following communities: </b>Acton | Arlington | Bedford | Boxboro | Burlington | Carlisle | Concord | Lexington | Lincoln | Littleton | Maynard | Stow | Wilmington | Winchester | Woburn</p>
+              <h3>Lowell Area Office</h3>
+              <i>325 Chelmsford Street | Lowell, MA 01851 | (978) 322-4300</i>
+              <p><b>Serves the following communities: </b>Billerica | Chelmsford | Dracut | Dunstable | Lowell | Tewksbury | Tyngsboro | Westford</p>
+              <h3>Merrimack Valley Area Office</h3>
+              <i>280 Merrimack Street 2nd Fl. (mail), 3rd Fl. (visit) | Lawrence, MA 01843 | (978) 521-9432</i>
+              <p><b>Serves the following communities: </b>Amesbury | Andover | Boxford | Georgetown | Groveland | Haverhill | Lawrence | Merrimac | Methuen | Newbury | Newburyport | North Andover | Rowley | Salisbury | West Newbury</p>
+              <h3>Metro North Area Office</h3>
+              <i>200 Harvard Mills Square | Wakefield, MA 01880 | (781) 338-2300</i>
+              <p><b>Serves the following communities: </b>Everett | Lynnfield | Malden | Medford | Melrose | North Reading | Reading | Saugus | Stoneham | Wakefield</p>
+              <h3>North Shore Area Office</h3>
+              <i>100 Cummings Center, Suite 150 B | 181 Eliot Street | Beverly, MA 01915 | (978) 927-2727</i>
+              <p><b>Serves the following communities: </b>Beverly | Danvers | Essex | Gloucester | Hamilton | Ipswich | Lynn | Manchester | Marblehead | Middleton | Nahant | Peabody | Rockport | Salem | Swampscott | Topsfield | Wenham</p>
+            </div>
+            <div class="areaOfficeInfo" id="seAreaOffice">
+              <p><i>Please direct all support- and services-related questions to your local area office listed below. All supports are subject to funding and availability.</i></p>
+              <h3>Brockton Area Office</h3>
+              <i>60 Main Street. 3rd Floor | Brockton, MA 02301 | (774) 296-6090</i>
+              <p><b>Serves the following communities: </b>Abington | Avon | Bridgewater | Brockton | East Bridgewater | Easton | Holbrook | Rockland | Stoughton | West Bridgewater | Whitman</p>
+              <h3>Cape Cod/Islands Area Office</h3>
+              <i>181 North Street | Hyannis, MA 02601 | (508) 771-2595</i>
+              <p><b>Serves the following communities: </b>Aquinnah | Barnstable | Bourne | Brewster | Chatham | Chilmark | Dennis | Eastham | Edgartown | Falmouth | Harwich | Hyannis | Mashpee | Nantucket | Oak Bluffs | Orleans | Provincetown | Sandwich | Tisbury | Truro | Wellfleet | West Tisbury | Yarmouth</p>
+              <h3>Fall River Area Office</h3>
+              <i>1 Father DeValles Blvd, Suite 203 | Fall River, MA 02723 | (508) 730-1209</i>
+              <p><b>Serves the following communities: </b>Assonet | Fall River | Freetown | Somerset | Swansea | Westport</p>
+              <h3>New Bedford Area Office</h3>
+              <i>1740 Purchase St. | New Bedford, MA 02740 | (508) 992-1848</i>
+              <p><b>Serves the following communities: </b>Acushnet | Dartmouth | Fairhaven | Gosnold | Marion | Mattapoisett | New Bedford | Rochester | Wareham</p>
+              <h3>Plymouth Area Office</h3>
+              <i>38 Industrial Park Road | Plymouth, MA 02360 | (508) 732-5700</i>
+              <p><b>Serves the following communities: </b>Carver | Duxbury | Halifax | Hanover | Hanson | Kingston | Marshfield | Pembroke | Plymouth | Plympton</p>
+              <h3>South Coastal Area Office</h3>
+              <i>220R Forbes Road | Braintree, MA 02184 | (781) 356-8850</i>
+              <p><b>Serves the following communities: </b>Braintree | Cohassett | Hingham | Hull | Milton | Norwell | Quincy | Randolph | Scituate | Weymouth</p>
+              <h3>Taunton/Attleboro Area Office</h3>
+              <i>21 Spring Street, Suite #1, Unit 4 | Taunton, MA 02780 | (508) 824-0614</i>
+              <p><b>Serves the following communities: </b>Attleboro | Berkley | Dighton | Lakeville | Mansfield | Middleboro | North Attleboro | Norton | Raynham | Rehoboth | Seekonk | Taunton</p>
+            </div>
+            <div class="areaOfficeInfo" id="meAreaOffice">
+              <p><i>Please direct all support- and services-related questions to your local area office listed below. All supports are subject to funding and availability.</i></p>
+              <h3>Charles River West Area Office</h3>
+              <i>255 Elm Street - Ste. 205 | Somerville, MA 02144 | (617) 623-5950</i>
+              <p><b>Serves the following communities: </b>Belmont | Cambridge | Somerville | Waltham | Watertown</p>
+              <h3>Greater Boston Area Office</h3>
+              <i>65 Sprague Street, Rear West | Hyde Park, MA 02136 | (617) 363-2900</i>
+              <p><b>Serves the following communities: </b>Boston | Brookline | Chelsea | Revere | Winthrop</p>
+              <h3>Middlesex West Area Office</h3>
+              <i>300 Howard Street, 1st Fl | Framingham, MA 01702 | (508) 861-2211</i>
+              <p><b>Serves the following communities: </b>Ashland | Dover | Framingham | Holliston | Hopkinton | Hudson | Marlboro | Natick | Northboro | Sherborn | Southboro | Sudbury | Wayland | Westboro</p>
+              <h3>Newton/South Norfolk Area Office</h3>
+              <i>125 West Street | Walpole, MA 02081 | (508) 668-3679</i>
+              <p><b>Serves the following communities: </b>Canton | Dedham | Foxboro | Medfield | Millis | Needham | Newton | Norfolk | Norwood | Plainville | Sharon | Walpole | Wellesley | Weston | Westwood | Wrentham</p>
+            </div>
+            <div class="areaOfficeInfo" id="cwAreaOffice">
+              <p><i>Please direct all support- and services-related questions to your local area office listed below. All supports are subject to funding and availability.</i></p>
+              <h3>Berkshire Area Office</h3>
+              <i>333 East Street, 5th Floor | Pittsfield, MA 01201 | (413) 447-7381</i>
+              <p><b>Serves the following communities: </b>Adams | Alford | Becket | Cheshire | Clarksburg | Dalton | Egremont | Florida | Great Barrington | Hancock | Hinsdale | Lanesboro | Lee | Lenox | Monterey | Monroe | Mt. Washington | New Ashford | New Marlboro | North Adams | Otis | Peru | Pittsfield | Richmond | Sandisfield | Savoy | Sheffield | Stockbridge | Tyringham | Washington | West Stockbridge | Williamstown | Windsor</p>
+              <h3>Franklin/Hampshire Area Office</h3>
+              <i>One Roundhouse Plaza, Ste. 204 | Northampton, MA 01060 | (413) 586-4948</i>
+              <p><b>Serves the following communities: </b>Amherst | Ashfield | Athol | Bernardson | Buckland | Charlemont | Chesterfield | Colrain | Conway | Cummington | Deerfield | Easthampton | Erving | Gill | Goshen | Greenfield | Hadley | Hatfield | Hawley | Heath | Leverett | Leyden | Middlefield | Millers Falls | Montague | New Salem | Northampton | Northfield | Orange | Pelham | Petersham | Phillipston | Plainfield | Rowe | Royalston | Shelburne | Shutesbury | Sunderland | Turners Falls | Warwick | Wendell | Westhampton | Whately | Williamsburg | Worthington</p>
+              <h3>Holyoke/Chicopee Area Office </h3>
+              <i>113 Hampden Street | Holyoke, MA 01040 | (413) 535-1022</i>
+              <p><b>Serves the following communities: </b>Belchertown | Chicopee | Granby | Holyoke | Ludlow | Monson | Palmer | South Hadley | Southampton | Ware</p>
+              <h3>North Central Area Office</h3>
+              <i>49 Nursery Lane | Fitchburg, MA 01420 | (978) 342-2140</i>
+              <p><b>Serves the following communities: </b>Ashburnham | Ashby | Ayer | Baldwinville | Barre | Berlin | Bolton | Clinton | East Princeton | East Templeton | Fitchburg | Gardner | Gilbertville | Groton | Hardwick | Harvard | Hubbardston | Lancaster | Leominster | Lunenburg | New Braintree | Oakham | Pepperell | Princeton | Rutland | Shirley | South Barre | South Lancaster | Sterling | Still River | Templeton | Townsend | West Groton | West Townsend | Westminster | Winchendon</p>
+              <h3>South Valley (Milford) Area Office</h3>
+              <i>Westview Mall | 194 West Street, Suite #9 | Milford, MA 01757 | (508) 634-3345</i>
+              <p><b>Serves the following communities: </b>Bellingham | Blackstone | Douglas | East Douglas | Franklin | Grafton | Hopedale | Linwood | Medway | Mendon | Milford | Millbury | Millville | Northbridge | Sutton | Upton | Uxbridge | Whitinsville</p>
+              <h3>South Valley (Southbridge) Area Office</h3>
+              <i>1 North Street, Suite C | Southbridge, MA 01550 | (508) 764-0751</i>
+              <p><b>Serves the following communities: </b>Brimfield | Brookfield | Charlton | Dudley | East Brookfield | Holland | North Brookfield | Oxford | Southbridge | Spencer | Sturbridge | Wales | Warren | Webster | West Brookfield</p>
+              <h3>Springfield/Westfield Area Office</h3>
+              <i>436 Dwight St., Ste. 205 | Springfield, MA 01103 | (413) 784-1339</i>
+              <p><b>Serves the following communities: </b>Agawam | Blandford | Chester | East Longmeadow | Granville | Hampden | Huntington | Longmeadow | Montgomery | Russell | Southwick | Springfield | Tolland | West Springfield | Westfield | Wilbraham</p>
+              <h3>Worcester Area Office</h3>
+              <i>324 Clark Street (Rear) | Worcester, MA 01608 | (508) 792-6200</i>
+              <p><b>Serves the following communities: </b>Auburn | Boylston | Cherry Valley | Holden | Jefferson | Leicester | Paxton | Rochdale | Shrewsbury | West Boylston | Worcester</p>
+            </div>
+          </div>
+          <div id="familySupport">
+            <h2 class="infoTitle">Family Support Centers</h2>
+            <div class="familySupportInfo" id="neFamilySupport">
+              <div class="familySupportSub">
+                <h3>Central Middlesex Area</h3>
+                <h4>Riverside Community Care – Riverside Family Support Center</h4>
+                <p>300 West Cummings Park, Suite 354, Woburn, MA 01801 | (781) 801-5247</p>
+                <a href="https://www.riversidefamilysupport.org" target="_blank">www.riversidefamilysupport.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>Lowell Area</h3>
+                <h4>LifeLinks Family Support Center</h4>
+                <p>4 Omni Way, Chelmsford, MA 01824 | (978) 349-3039</p>
+                <a href="https://www.lifelinksinc.net" target="_blank">www.lifelinksinc.net</a>
+                <h4>Cambodian Mutual Assistance Association of Greater Lowell – Monorom Family Support Program (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>465 School Street, Lowell, MA 01851 | (978) 454-6200 ext.1026</p>
+                <a href="https://www.cmaalowell.org" target="_blank">www.cmaalowell.org</a>
+                <p><i>Specific Ethnic/Linguistic Group: Cambodian families</i></p>
+              </div>
+              <div class="familySupportSub">
+                <h3>Merrimack Valley Area</h3>
+                <h4>Fidelity House Human Services – Merrimack Valley Family Support Center</h4>
+                <p>439 Union Street, Suite 401, Lawrence, MA 01843 | (978) 685-9471 (x157)</p>
+                <a href="https://www.fidelityhhs.org" target="_blank">www.fidelityhhs.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>Metro North Area</h3>
+                <h4>Communitas Family Resource Center</h4>
+                <p>60D Audubon Road, Wakefield, MA 01880 | (781) 587-2314</p>
+                <a href="https://https://communitasma.org/resources/" target="_blank">https://communitasma.org/resources/</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>North Shore Area</h3>
+                <h4>Northeast Arc Family Resources</h4>
+                <p>6 Southside Road, Danvers, MA 01923 | (978) 624-2381</p>
+                <a href="https://www.ne-arc.org" target="_blank">www.ne-arc.org</a>
+                <h4>Bridgewell Family Support Center (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>66 Silsbee Street, Lynn, MA 01901 | (339) 883-1761</p>
+                <a href="https://www.bridgewell.org" target="_blank">www.bridgewell.org</a>
+              </div>
+            </div>
+            <div class="familySupportInfo" id="seFamilySupport">
+              <div class="familySupportSub">
+                <h3>Brockton Area</h3>
+                <h4>Brockton Area Arc</h4>
+                <p>1250 West Chestnut Street, Brockton, MA 02301 | (508) 583-8030 x224</p>
+                <a href="https://www.brocktonareaarc.org" target="_blank">www.brocktonareaarc.org</a>
+                <h4>Cape Cod and the Islands Area – Kennedy-Donovan Center</h4>
+                <p>30 Ansel Hallet Road, West Yarmouth, MA 02673 | (774) 352-1305</p>
+                <a href="https://www.kdc.org" target="_blank">www.kdc.org</a>
+                <h4>Martha’s Vineyard Community Services</h4>
+                <p>111 Edgartown Road, Vineyard Haven, MA 02568 | (508) 693-7900</p>
+                <a href="https://www.mvcommunityservices.com" target="_blank">www.mvcommunityservices.com</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>Fall River Area</h3>
+                <h4>People Inc. Family Support Center</h4>
+                <p>1 Father DeValles Boulevard, Suite 401 Fall River, MA 02723 | (774) 488-5320</p>
+                <a href="https://www.peopleinc-fr.org" target="_blank">www.peopleinc-fr.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>New Bedford Area</h3>
+                <h4>Nemasket – Family Connections Center</h4>
+                <p>109 Fairhaven Road, Mattapoisett, MA 02739 | (508) 999-4436</p>
+                <a href="https://www.nemasketgroup.org" target="_blank">www.nemasketgroup.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>Plymouth Area</h3>
+                <h4>The Arc of Greater Plymouth</h4>
+                <p>52 Armstrong Road, Plymouth, MA 02360 | (508) 732-9292, ext. 117</p>
+                <a href="https://www.thearcofgp.org" target="_blank">www.thearcofgp.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>South Coastal Area</h3>
+                <h4>Advocates – South Coastal Family Support Center</h4>
+                <p>1189 R North Main Street, Randolph, MA 02368 | (781) 767-3048</p>
+                <a href="https://www.southcoastalfamilysupport.org/" target="_blank">www.southcoastalfamilysupport.org/</a>
+                <h4>South Shore Support Services</h4>
+                <p>435 Columbian Street, Weymouth, MA 02190 | (781) 331-7878</p>
+                <a href="https://www.soshoresupport.org" target="_blank">www.soshoresupport.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>Taunton/Attleboro Area</h3>
+                <h4>The Arc of Bristol County</h4>
+                <p>141 Park Street, Attleboro, MA 02703 | (508) 226-1445</p>
+                <a href="https://www.arcnbc.org" target="_blank">www.arcnbc.org</a>
+              </div>
+              <div class="familySupportSub">
+                <h3>Tri-Area (Brockton, Plymouth, South Coastal)</h3>
+                <h4>BAMSI Family Support Center</h4>
+                <p>155 Webster Street – Unit D, Hanover, MA 02339 | (781) 878-4074 ext. 11</p>
+                <a href="https://www.bamsi.org" target="_blank">www.bamsi.org</a>
+              </div>
+            </div>
+            <div class="familySupportInfo" id="meFamilySupport">
+                <h3>Charles River West Area</h3>
+                <h4>Cambridge Family and Children’s Service</h4>
+                <p>60 Gore Street, Cambridge, MA 02141 | (617) 876-4210 x 4259</p>
+                <a href="https://www.helpfamiles.org" target="_blank">www.helpfamiles.org</a>
+                <h3>Greater Boston Area</h3>
+                <h4>Bay Cove Family Support Center</h4>
+                <p>66 Canal Street, Boston, MA 02114 | (617) 371-3121</p>
+                <a href="https://www.baycove.org" target="_blank">www.baycove.org</a>
+                <h4>Vinfen Corp. DDS Family Support Center</h4>
+                <p>260 Milton St, Suite 101, Dedham Ma 02026 | (617) 562-4094</p>
+                <a href="https://www.vinfen.org" target="_blank">www.vinfen.org</a>
+                <h4>Work Inc. Family Support Center</h4>
+                <p>25 Beach Street, Dorchester, MA 02122 | (617) 691-1601</p>
+                <a href="https://www.workinc.org" target="_blank">www.workinc.org</a>
+                <h4>Advocates – Project Able (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>888 Washington Street Suite 102, Boston, MA 02111</p>
+                <p>1881 Worcester Road, Framingham, MA 01701 | (617) 988-8132</p>
+                <a href="https://www.advocates.org" target="_blank">www.advocates.org</a>
+                <p><i>Specific Ethnic/Linguistic Group: Chinese and Vietnamese Families</i></p>
+                <h4>HAPHI – Haitian Family Support Center (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>1603 Blue Hill Avenue, Mattapan, MA 02126 | (617) 298-8076</p>
+                <a href="https://www.haphi.org" target="_blank">www.haphi.org</a>
+                <p><i>Specific Ethnic/Linguistic Group: Haitian Families</i></p>
+                <h4>Dimock Family Support Center (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>55 Dimock Street, Roxbury, MA 02119 | (617) 442-8800 ext.1204</p>
+                <a href="https://www.dimock.org" target="_blank">www.dimock.org</a>
+                <p><i>Specific Ethnic/Linguistic Group: African American/Multicultural Families</i></p>
+                <h4>Work Inc. – Solidaridad (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>25 Beach Street, Dorchester, MA 02122 | (617) 691-1620</p>
+                <a href="https://www.workinc.org " target="_blank">www.workinc.org </a>
+                <p><i>Specific Ethnic/Linguistic Group: Latin American Families</i></p>
+                <h3>Middlesex West Area</h3>
+                <h4>Charles River Center </h4>
+                <p>4 Strathmore Road, Natick, MA 01760 | 508-651-5914</p>
+                <a href="https://www.charlesrivercenter.org" target="_blank">www.charlesrivercenter.org</a>
+                <h4>Thrive Support & Advocacy</h4>
+                <p>65 Boston Post Road West Suite 220 Marlborough, MA 01752 | (508) 485-4227 x 1004</p>
+                <a href="https://www.icanthrive.org" target="_blank">www.icanthrive.org</a>
+                <h3>Newton/South Norfolk Area</h3>
+                <h4>Charles River Center</h4>
+                <p>59 East Militia Heights Road, Needham, MA 02492 | (781) 972-1048</p>
+                <a href="https://www.charlesrivercenter.org" target="_blank">www.charlesrivercenter.org</a>
+                <h4>The Arc of South Norfolk Family Support Center</h4>
+                <p>789 Clapboardtree Street, Westwood, MA 02090 | (781) 762-4001</p>
+                <a href="https://www.arcsouthnorfolk.org" target="_blank">www.arcsouthnorfolk.org</a>
+              </div>
+            </div>
+            <div class="familySupportInfo" id="cwFamilySupport">
+              <div class="familySupportSub cwFamilySupportSub">
+                <h3>Berkshire Area</h3>
+                <h4>Berkshire County Arc Central & Southern Berkshire County Family Support Center</h4>
+                <p>46 Elm Street, Pittsfield, MA 01201 | (413) 464-7262</p>
+                <a href="https://www.bcarc.org" target="_blank">www.bcarc.org</a>
+                <h4>UCP Central Berkshire Family Support Center</h4>
+                <p>535 Curran Highway, North Adams, MA 01247 | (413) 664-9345</p>
+                <p>208 West Street, Pittsfield, MA 01201 | (413) 442-1562</p>
+                <a href="https://www.ucpberkshire.org" target="_blank">www.ucpberkshire.org</a>
+              </div>
+              <div class="familySupportSub cwFamilySupportSub">
+                <h3>Franklin/Hampshire Area</h3>
+                <h4>Pathlight – Family Empowerment</h4>
+                <p>41 Russell Street, Hadley, MA 01035 | (413) 585-8010</p>
+                <a href="https://www.family-empowerment.org" target="_blank">www.family-empowerment.org</a>
+                <h4>The United Arc – Franklin County Family Support Center</h4>
+                <p>294 Avenue A, Turners Falls, MA 01376 | (413) 774-5558</p>
+                <a href="https://www.theunitedarc.org" target="_blank">www.theunitedarc.org</a>
+                <h4>The United Arc – North Quabbin Family Support Center-GAAAFSN</h4>
+                <p>361 Main Street, Athol, MA 01331 | (978) 249-4052</p>
+                <a href="https://www.theunitedarc.org" target="_blank">www.theunitedarc.org</a>
+              </div>
+              <div class="familySupportSub cwFamilySupportSub">
+                <h3>Holyoke/Chicopee Area</h3>
+                <h4>Multicultural Community Services Family Support Center</h4>
+                <p>260 Westfield Road, Holyoke, MA 01040 | (413) 534-3299</p>
+                <a href="https://www.mcsnet.org" target="_blank">www.mcsnet.org</a>
+              </div>
+              <div class="familySupportSub cwFamilySupportSub">
+                <h3>North Central Area</h3>
+                <h4>Seven Hills Family Services – Family Support Center of North Central</h4>
+                <p>1460 John Fitch Highway, Fitchburg, MA 01402 | (978) 632-4322</p>
+                <a href="https://www.sevenhills.org/affiliates/seven-hills-family-services" target="_blank">www.sevenhills.org/affiliates/seven-hills-family-services</a>
+                <h4>Centro – Multicultural Family Development Center (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>437 Main Street, Fitchburg, MA 01420 | (978) 343-5836</p>
+                <a href="https://www.centroinc.org" target="_blank">www.centroinc.org</a>
+                <p><i>Specific Ethnic/Linguistic Group: Multicultural families</i></p>
+              </div>
+              <div class="familySupportSub cwFamilySupportSub">
+                <h3>South Valley Area</h3>
+                <h4>Kennedy Donovan Center</h4>
+                <p>1 Maple Street, Milford, MA 01757 | (508) 473-5700</p>
+                <a href="https://www.kdc.org" target="_blank">www.kdc.org</a>
+                <h4>Seven Hills Family Services – Family Support Center of South Valley</h4>
+                <p>208 Charlton Road, Sturbridge, MA 01566 | (508) 796-1950</p>
+                <a href="https://www.sevenhills.org/affiliates/seven-hills-family-services" target="_blank">www.sevenhills.org/affiliates/seven-hills-family-services</a>
+              </div>
+              <div class="familySupportSub cwFamilySupportSub">
+                <h3>Springfield/Westfield Area</h3>
+                <h4>Multicultural Community Services Family Support Center</h4>
+                <p>1000 Wilbraham Road, Springfield, MA 01109 | (413) 782-2500</p>
+                <a href="https://www.mcsnet.org" target="_blank">www.mcsnet.org</a>
+                <h4>New North Citizen’s Council, Inc – New North Family Support Center (Cultural/Linguistic-Specific Family Support Center)</h4>
+                <p>11 Wilbraham Road 2nd Floor, Springfield, MA 01109 | (413) 747-0098</p>
+                <a href="https://https://www.newnorthcc.org/" target="_blank">https://www.newnorthcc.org/</a>
+                <p><i>Specific Ethnic/Linguistic Group: Multicultural families in urban Springfield</i></p>
+              </div>
+              <div class="familySupportSub">
+                <h3>Worcester Area</h3>
+                <h4>Seven Hills Family Services – Family Support Center of Greater Worcester</h4>
+                <p>799 West Boylston Street, Worcester, MA 01606 | (508) 796-1850</p>
+                <a href="https://www.sevenhills.org/affiliates/seven-hills-family-services" target="_blank">www.sevenhills.org/affiliates/seven-hills-family-services</a>
+                <h4>Centro – Worcester Multicultural Family Support Center (Cultural/Linguistic-Specific Family) Support Center</h4>
+                <p>11 Sycamore Street, Worcester, MA 01608 | (508) 798-1900 x 243</p>
+                <a href="https://www.centroinc.org" target="_blank">www.centroinc.org</a>
+                <p><i>www.centroinc.org</i></p>
+              </div>
+            </div>
+        </div>
+        <div class="additionalInfo">
+          <h2 class="infoTitle">More Information</h2>
+          <div class="additionalColumn" id="additionalResources">
+              <h3 class="infoSubHead">Additional Resources</h3>
+              <p><a class="moreLink" href="https://www.mass.gov/lists/dds-eligibility-forms">Go to the DDS application</a></p>
+              <p><a class="moreLink" href="https://www.mass.gov/dds-turning-22-services">DDS Turning 22 Services</a></p>
+              <p><a class="moreLink" href="https://www.mass.gov/about-the-department-of-developmental-services">About the Department of Developmental Services</a></p>
+              <p><a class="moreLink" href="https://www.mass.gov/forms/contact-dds-online">Question? Comment? Submit it here</a></p>
+            </div>
+          <div class="additionalColumn" id="printedCopy">
+            <h3 class="infoSubHead">Printed Copies of this Information</h3>
+            <p><a class="moreLink" href="https://www.mass.gov/doc/northeast-region-eligibility-brochure-0/download">Northeast Regional Brochure</a></p>
+            <p><a class="moreLink" href="https://www.mass.gov/doc/southeast-regional-eligibility-brochure/download">Southeast Regional Brochure</a></p>
+            <p><a class="moreLink" href="https://www.mass.gov/doc/metro-regional-eligibility-brochure/download">Metro Regional Brochure</a></p>
+            <p><a class="moreLink" href="https://www.mass.gov/doc/centralwest-regional-eligibility-brochure/download">Central/West Regional Brochure</a></p>
+          </div>
+        </div>
+      </div>
+        <!--<button type="button" onclick="variableCheck()">Variable Check</button>-->
+    </div>
+    <script>
+
+      var mymap = L.map('regionsMap').setView([42.2229558, -71.5521811], 8);
+
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWJsZWljaGZlbGQiLCJhIjoiY2p1azZ3dGoxMXN2ZjQ1bzI0Z3U5aDFqZCJ9.aprixnlrY_kPCaj-4H3XSw', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'your.mapbox.access.token'
+      }).addTo(mymap);
+
+      var DdsIcon = L.Icon.extend({
+        options: {
+          shadowUrl: 'images/shadow.png',
+          iconSize: [22,40],
+          shadowSize: [28.5,15],
+          iconAnchor: [10.9615,39.5],
+          shadowAnchor: [0,14.8936],
+          popupAnchor: [0,-30]
+        }
+      });
+
+      var neIcon = new DdsIcon({iconUrl:'images/ne.png'}),
+        seIcon = new DdsIcon({iconUrl:'images/se.png'}),
+        meIcon = new DdsIcon({iconUrl:'images/me.png'}),
+        cwIcon = new DdsIcon({iconUrl:'images/cw.png'}),
+        aoIcon = new DdsIcon({iconUrl:'images/ao.png'}),
+        fsIcon = new DdsIcon({iconUrl:'images/fs.png'});
+
+      var neStyle = {
+        "color": "#e17273",
+        "weight": 2,
+        "opacity": 0.45,
+        "fillOpacity": 0.3,
+        "className": "regionBlock"
+      };
+
+      var seStyle = {
+        "color": "#8cc1bd",
+        "weight": 2,
+        "opacity": 0.45,
+        "fillOpacity": 0.3,
+        "className": "regionBlock"
+      };
+
+      var meStyle = {
+        "color": "#ee9e4e",
+        "weight": 2,
+        "opacity": 0.45,
+        "fillOpacity": 0.3,
+        "className": "regionBlock"
+      };
+
+      var cwStyle = {
+        "color": "#6b8eb3",
+        "weight": 2,
+        "opacity": 0.45,
+        "fillOpacity": 0.3,
+        "className": "regionBlock"
+      };
+
+      var neSwath = L.geoJSON(neBlock, {style: neStyle}).addTo(mymap).on("click", northeastInfo);
+      var seSwath = L.geoJSON(seBlock, {style: seStyle}).addTo(mymap).on("click", southeastInfo);
+      var meSwath = L.geoJSON(meBlock, {style: meStyle}).addTo(mymap).on("click", metroInfo);
+      var cwSwath = L.geoJSON(cwBlock, {style: cwStyle}).addTo(mymap).on("click", centralInfo);
+
+      function neMouseover() {
+        neSwath.setStyle({
+          "opacity": 1,
+          "fillOpacity": 0.6
+        });
+      };
+
+      function seMouseover() {
+        seSwath.setStyle({
+          "opacity": 1,
+          "fillOpacity": 0.6
+        });
+      };
+
+      function meMouseover() {
+        meSwath.setStyle({
+          "opacity": 1,
+          "fillOpacity": 0.6
+        });
+      };
+
+      function cwMouseover() {
+        cwSwath.setStyle({
+          "opacity": 1,
+          "fillOpacity": 0.6
+        });
+      };
+
+      function normalStyle() {
+        neSwath.setStyle({
+          "opacity": 0.45,
+          "fillOpacity": 0.3
+        });
+        seSwath.setStyle({
+          "opacity": 0.45,
+          "fillOpacity": 0.3
+        });
+        meSwath.setStyle({
+          "opacity": 0.45,
+          "fillOpacity": 0.3
+        });
+        cwSwath.setStyle({
+          "opacity": 0.45,
+          "fillOpacity": 0.3
+        });
+      };
+
+      var neMarker = L.marker([42.5856503,-70.9726073],{icon:neIcon}).addTo(mymap).bindPopup("<p><b>Northeast Regional Office</b></p><p>450 Maple St. | Hathorne, MA 01923</p>"),
+        seMarker = L.marker([41.9122701,-70.9621288],{icon:seIcon}).addTo(mymap).bindPopup("<p><b>Southeast Regional Office</b></p><p>151 Campanelli Dr Suite B | Middleborough, MA 02346</p>"),
+        meMarker = L.marker([42.3870657,-71.2013446],{icon:meIcon}).addTo(mymap).bindPopup("<p><b>Metro Regional Office</b></p><p>465 Waverley Oaks Rd #120 | Waltham, MA 02452</p>");
+        cwMarker = L.marker([42.1054866,-72.5816832],{icon:cwIcon}).addTo(mymap).bindPopup("<p><b>Central/West Regional Office</b></p><p>140 High St #301 | Springfield, MA 01105 </p>");
+
+      var berkshireAO = L.marker([42.4480871,-73.2492834],{icon:aoIcon}).bindPopup("<p><b>Berkshire Area Office</b></p><p>333 East Street, 5th Floor | Pittsfield, MA 01201</p>"),
+        brocktonAO = L.marker([42.0845427,-71.0216],{icon:aoIcon}).bindPopup("<p><b>Brockton Area Office</b></p><p>60 Main Street, 3rd Floor | Brockton, MA 02301</p>"),
+        capeCodAO = L.marker([41.6514755,-70.2905595],{icon:aoIcon}).bindPopup("<p><b>Cape Cod/Islands Area Office</b></p><p>181 North Street | Hyannis, MA 02601</p>"),
+        centralMiddlesexAO = L.marker([42.5247506,-71.4343326],{icon:aoIcon}).bindPopup("<p><b>Central Middlesex Area Office</b></p><p>35 Nagog Park, Suite 2000 | Acton, MA 01720</p>"),
+        charlesRiverAO = L.marker([42.3956193,-71.1238772],{icon:aoIcon}).bindPopup("<p><b>Charles River West Area Office</b></p><p>255 Elm Street , Suite 205 | Somerville, MA 02144</p>"),
+        fallRiverAO = L.marker([41.6838798,-71.1387461],{icon:aoIcon}).bindPopup("<p><b>Fall River Area Office</b></p><p>1 Father DeValles Blvd, Suite 203 | Fall River, MA 02723</p>"),
+        franklinAO = L.marker([42.3166537,-72.6339583],{icon:aoIcon}).bindPopup("<p><b>Franklin/Hampshire Area Office</b></p><p>One Roundhouse Plaza, Suite 204 | Northampton, MA 01060</p>"),
+        greaterBostonAO = L.marker([42.235573,-71.1438839],{icon:aoIcon}).bindPopup("<p><b>Greater Boston Area Office</b></p><p>65 Sprague St | Hyde Park, MA 02136</p>"),
+        holyokeAO = L.marker([42.2086457,-72.6092829],{icon:aoIcon}).bindPopup("<p><b>Holyoke/Chicopee Area Office</b></p><p>113 Hampden Street | Holyoke, MA 01040</p>"),
+        lowellAO = L.marker([42.628417,-71.360967],{icon:aoIcon}).bindPopup("<p><b>Lowell Area Office</b></p><p>55 Technology Dr. #202 | Lowell, MA 01851</p>"),
+        merrimackValleyAO = L.marker([42.7029002,-71.1526664],{icon:aoIcon}).bindPopup("<p><b>Merrimack Valley Area Office</b></p><p>280 Merrimack Street, 3rd Floor | Lawrence, MA 01843</p>"),
+        metroNorthAO = L.marker([42.50012,-71.0779053],{icon:aoIcon}).bindPopup("<p><b>Metro North Area Office</b></p><p>200 Harvard Mills Square | Wakefield, MA 01880</p>"),
+        middlesexWestAO = L.marker([42.2787364,-71.41304],{icon:aoIcon}).bindPopup("<p><b>Middlesex West Area Office</b></p><p>300 Howard Street, 1st Floor | Framingham, MA 01702</p>"),
+        newBedfordAO = L.marker([41.6487527,-70.9304311],{icon:aoIcon}).bindPopup("<p><b>New Bedford Area Office</b></p><p>1740 Purchase St. | New Bedford, MA 02740</p>"),
+        newtonAO = L.marker([42.1447138,-71.2608865],{icon:aoIcon}).bindPopup("<p><b>Newton/South Norfolk Area Office</b></p><p>125 West Street | Walpole, MA 02081</p>"),
+        northCentralAO = L.marker([42.5866026,-71.8164278],{icon:aoIcon}).bindPopup("<p><b>North Central Area Office</b></p><p>49 Nursery Lane | Fitchburg, MA 01420</p>"),
+        northShoreAO = L.marker([42.5579041,-70.8890486],{icon:aoIcon}).bindPopup("<p><b>North Shore Area Office</b></p><p>100 Cummings Center, Suite 150 B | Beverly, MA 01915</p>"),
+        plymouthAO = L.marker([41.960145,-70.7020527],{icon:aoIcon}).bindPopup("<p><b>Plymouth Area Office</b></p><p>38 Industrial Park Road , Suite 1 | Plymouth, MA 02360</p>"),
+        southCoastalAO = L.marker([42.2201173,-71.0370058],{icon:aoIcon}).bindPopup("<p><b>South Coastal Area Office</b></p><p>220R Forbes Road | Braintree, MA 02184</p>"),
+        svMilfordAO = L.marker([42.1421981,-71.5467028],{icon:aoIcon}).bindPopup("<p><b>South Valley (Milford) Area Office</b></p><p>194 West St, Suite 9 | Milford, MA 01757</p>"),
+        svSouthbridgeAO = L.marker([42.0772983,-72.0331961],{icon:aoIcon}).bindPopup("<p><b>South Valley (Southbridge) Area Office</b></p><p>1 North Street, Suite C | Southbridge, MA 01550</p>"),
+        springfieldAO = L.marker([42.1058482,-72.594416],{icon:aoIcon}).bindPopup("<p><b>Springfield/Westfield Area Office</b></p><p>436 Dwight Street, Suite 205 | Springfield, MA 01103</p>"),
+        tauntonAO = L.marker([41.8994789,-71.0913815],{icon:aoIcon}).bindPopup("<p><b>Taunton/Attleboro Area Office</b></p><p>21 Spring Street, Suite #1 | Taunton, MA 02780</p>"),
+        worcesterAO = L.marker([42.3113661,-71.776732],{icon:aoIcon}).bindPopup("<p><b>Worcester Area Office</b></p><p>324R Clark Street | Worcester, MA 01606</p>");
+
+      var neAO = L.layerGroup([centralMiddlesexAO,lowellAO,merrimackValleyAO,metroNorthAO,northShoreAO]),
+        seAO = L.layerGroup([brocktonAO,capeCodAO,fallRiverAO,newBedfordAO,plymouthAO,southCoastalAO,tauntonAO]),
+        meAO = L.layerGroup([charlesRiverAO,greaterBostonAO,middlesexWestAO,newtonAO]),
+        cwAO = L.layerGroup([berkshireAO,franklinAO,holyokeAO,northCentralAO,svMilfordAO,svSouthbridgeAO,springfieldAO,worcesterAO]);
+
+      var riversideFS = L.marker([42.4966532,-71.1301514],{icon:fsIcon}).bindPopup("<p><b>Riverside Community Care – Riverside Family Support Center</b></p><p>300 West Cummings Park, Suite 354 | Woburn, MA 01801</p>"),
+        lifelinksFS = L.marker([42.5897111,-71.3220558],{icon:fsIcon}).bindPopup("<p><b>LifeLinks Family Support Center</b></p><p>4 Omni Way | Chelmsford, MA 01824</p>"),
+        monoromFS = L.marker([42.637845,-71.3272619],{icon:fsIcon}).bindPopup("<p><b>Cambodian Mutual Assistance Association of Greater Lowell – Monorom Family Support Program (Cultural/Linguistic-Specific Family Support Center)</b></p><p>465 School Street | Lowell, MA 01851</p>"),
+        merrimackFS = L.marker([42.6909324,-71.1579947],{icon:fsIcon}).bindPopup("<p><b>Fidelity House Human Services – Merrimack Valley Family Support Center</b></p><p>439 Union Street, Suite 401 | Lawrence, MA 01843</p>"),
+        communitasFS = L.marker([42.5176956,-71.0477543],{icon:fsIcon}).bindPopup("<p><b>Communitas Family Resource Center</b></p><p>60D Audubon Road | Wakefield, MA 01880</p>"),
+        neArcFS = L.marker([42.5665086,-70.9697786],{icon:fsIcon}).bindPopup("<p><b>Northeast Arc Family Resources</b></p><p>6 Southside Road | Danvers, MA 01923</p>"),
+        bridgewellFS = L.marker([42.4644268,-70.9424577],{icon:fsIcon}).bindPopup("<p><b>Bridgewell Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>66 Silsbee Street | Lynn, MA 01901</p>"),
+        brocktonArcFS = L.marker([42.0529212,-71.0680295],{icon:fsIcon}).bindPopup("<p><b>Brockton Area Arc</b></p><p>1250 West Chestnut Street | Brockton, MA 02301</p>"),
+        kdCapeCodFS = L.marker([41.6833582,-70.2603677],{icon:fsIcon}).bindPopup("<p><b>Cape Cod and the Islands Area – Kennedy-Donovan Center</b></p><p>30 Ansel Hallet Road | West Yarmouth, MA 02673</p>"),
+        mvCommunityServicesFS = L.marker([41.4480633,-70.6098006],{icon:fsIcon}).bindPopup("<p><b>Martha’s Vineyard Community Services</b></p><p>111 Edgartown Road | Vineyard Haven, MA 02568</p>"),
+        peopleIncFS = L.marker([41.6838798,-71.1387461],{icon:fsIcon}).bindPopup("<p><b>People Inc. Family Support Center</b></p><p>1 Father DeValles Boulevard, Suite 401 | Fall River, MA 02723</p>"),
+        nemasketFS = L.marker([41.6562177,-70.8439609],{icon:fsIcon}).bindPopup("<p><b>Nemasket – Family Connections Center</b></p><p>109 Fairhaven Road | Mattapoisett, MA 02739</p>"),
+        plymouthArcFS = L.marker([41.9559517,-70.6954778],{icon:fsIcon}).bindPopup("<p><b>The Arc of Greater Plymouth</b></p><p>52 Armstrong Road | Plymouth, MA 02360</p>"),
+        advocatesSouthCoastalFS = L.marker([42.196466,-71.0630677],{icon:fsIcon}).bindPopup("<p><b>Advocates – South Coastal Family Support Center</b></p><p>1189 R North Main Street | Randolph, MA 02368</p>"),
+        soutShoreFS = L.marker([42.1805416,-70.9714039],{icon:fsIcon}).bindPopup("<p><b>South Shore Support Services</b></p><p>435 Columbian Street | Weymouth, MA 02190</p>"),
+        bristolArcFS = L.marker([41.9429099,-71.2802598],{icon:fsIcon}).bindPopup("<p><b>The Arc of Bristol County</b></p><p>141 Park Street | Attleboro, MA 02703</p>"),
+        bamsiFS = L.marker([42.156118,-70.8570128],{icon:fsIcon}).bindPopup("<p><b>BAMSI Family Support Center</b></p><p>155 Webster Street – Unit D | Hanover, MA 02339</p>"),
+        cambridgeFS = L.marker([42.3716041,-71.0825043],{icon:fsIcon}).bindPopup("<p><b>Cambridge Family and Children’s Service</b></p><p>60 Gore Street | Cambridge, MA 02141</p>"),
+        bayCoveFS = L.marker([42.3636676,-71.0618547],{icon:fsIcon}).bindPopup("<p><b>Bay Cove Family Support Center</b></p><p>66 Canal Street | Boston, MA 02114</p>"),
+        vinfenFS = L.marker([42.2417453,-71.1480151],{icon:fsIcon}).bindPopup("<p><b>Vinfen Corp. DDS Family Support Center</b></p><p>260 Milton St, Suite 101 | Dedham Ma 02026</p>"),
+        workIncFS = L.marker([42.3034,-71.0570726],{icon:fsIcon}).bindPopup("<p><b>Work Inc. Family Support Center</b></p><p>25 Beach Street | Dorchester, MA 02122</p>"),
+        projectAbleFS = L.marker([42.3480732,-71.066191],{icon:fsIcon}).bindPopup("<p><b>Advocates – Project Able (Cultural/Linguistic-Specific Family Support Center)</b></p><p>888 Washington Street Suite 102 | Boston, MA 02111</p>"),
+        haphiFS = L.marker([42.2692064,-71.0961734],{icon:fsIcon}).bindPopup("<p><b>HAPHI – Haitian Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>1603 Blue Hill Avenue | Mattapan, MA 02126</p>"),
+        dimockFS = L.marker([42.3197994,-71.0998306],{icon:fsIcon}).bindPopup("<p><b>Dimock Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>55 Dimock Street | Roxbury, MA 02119</p>"),
+        solidaridadFS = L.marker([42.3034,-71.0570726],{icon:fsIcon}).bindPopup("<p><b>Work Inc. – Solidaridad (Cultural/Linguistic-Specific Family Support Center)</b></p><p>25 Beach Street | Dorchester, MA 02122</p>"),
+        charlesRiverNatickFS = L.marker([42.2956433,-71.3908383],{icon:fsIcon}).bindPopup("<p><b>Charles River Center</b></p><p>4 Strathmore Road | Natick, MA 01760</p>"),
+        thriveFS = L.marker([42.3404993,-71.5867311],{icon:fsIcon}).bindPopup("<p><b>Thrive Support & Advocacy</b></p><p>65 Boston Post Road West Suite 220 | Marlborough, MA 01752</p>"),
+        charlesRiverNeedhamFS = L.marker([42.2891301,-71.2571422],{icon:fsIcon}).bindPopup("<p><b>Charles River Center</b></p><p>59 East Militia Heights Road | Needham, MA 02492</p>"),
+        norfolkArcFS = L.marker([42.213274,-71.2022272],{icon:fsIcon}).bindPopup("<p><b>The Arc of South Norfolk Family Support Center</b></p><p>789 Clapboardtree Street | Westwood, MA 02090</p>"),
+        berkshireArcFS = L.marker([42.4453369,-73.246732],{icon:fsIcon}).bindPopup("<p><b>Berkshire County Arc Central & Southern Berkshire County Family Support Center</b></p><p>46 Elm Street | Pittsfield, MA 01201</p>"),
+        ucpNorthAdamsFS = L.marker([42.6852845,-73.1112855],{icon:fsIcon}).bindPopup("<p><b>UCP Central Berkshire Family Support Center</b></p><p>535 Curran Highway | North Adams, MA 01247</p>"),
+        ucpPittsfieldFS = L.marker([42.4481006,-73.2628297],{icon:fsIcon}).bindPopup("<p><b>UCP Central Berkshire Family Support Center</b></p><p>208 West Street | Pittsfield, MA 01201</p>"),
+        pathlightFS = L.marker([42.33921,-72.6087477],{icon:fsIcon}).bindPopup("<p><b>Pathlight – Family Empowerment</b></p><p>41 Russell Street | Hadley, MA 01035</p>"),
+        franklinArcFS = L.marker([42.6037571,-72.5642167],{icon:fsIcon}).bindPopup("<p><b>The United Arc – Franklin County Family Support Center</b></p><p>294 Avenue A | Turners Falls, MA 01376</p>"),
+        quabbinArcFS = L.marker([42.5938274,-72.2345475],{icon:fsIcon}).bindPopup("<p><b>The United Arc – North Quabbin Family Support Center-GAAAFSN</b></p><p>361 Main Street | Athol, MA 01331</p>"),
+        multiculturalHolyokeFS = L.marker([42.190916,-72.6425875],{icon:fsIcon}).bindPopup("<p><b>Multicultural Community Services Family Support Center</b></p><p>260 Westfield Road | Holyoke, MA 01040</p>"),
+        sevenhillsFitchburgFS = L.marker([42.6018282,-71.8017294],{icon:fsIcon}).bindPopup("<p><b>Seven Hills Family Services – Family Support Center of North Central</b></p><p>1460 John Fitch Highway | Fitchburg, MA 01402</p>"),
+        centroFitchburgFS = L.marker([42.5829969,-71.8008127],{icon:fsIcon}).bindPopup("<p><b>Centro – Multicultural Family Development Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>437 Main Street | Fitchburg, MA 01420</p>"),
+        kdMilfordFS = L.marker([42.1402027,-71.4894031],{icon:fsIcon}).bindPopup("<p><b>Kennedy Donovan Center</b></p><p>1 Maple Street | Milford, MA 01757</p>"),
+        sevenhillsSturbridgeFS = L.marker([42.1181335,-72.0660875],{icon:fsIcon}).bindPopup("<p><b>Seven Hills Family Services – Family Support Center of South Valley</b></p><p>208 Charlton Road | Sturbridge, MA 01566</p>"),
+        multiculturalSpringfieldFS = L.marker([42.1153894,-72.5301584],{icon:fsIcon}).bindPopup("<p><b>Multicultural Community Services Family Support Center</b></p><p>1000 Wilbraham Road | Springfield, MA 01109</p>"),
+        newNorthFS = L.marker([42.111015,-72.5654644],{icon:fsIcon}).bindPopup("<p><b>New North Citizen’s Council, Inc – New North Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>11 Wilbraham Road 2nd Floor | Springfield, MA 01109</p>"),
+        sevenhillsWorcesterFS = L.marker([42.3208206,-71.7976127],{icon:fsIcon}).bindPopup("<p><b>Seven Hills Family Services – Family Support Center of Greater Worcester</b></p><p>799 West Boylston Street | Worcester, MA 01606</p>"),
+        centroWorcesterFS = L.marker([42.257671,-71.80814],{icon:fsIcon}).bindPopup("<p><b>Centro – Worcester Multicultural Family Support Center (Cultural/Linguistic-Specific Family) Support Center</b></p><p>11 Sycamore Street | Worcester, MA 01608</p>");
+
+      var neFS = L.layerGroup([riversideFS,lifelinksFS,monoromFS,merrimackFS,communitasFS,neArcFS,bridgewellFS]),
+        seFS = L.layerGroup([brocktonArcFS,kdCapeCodFS,mvCommunityServicesFS,peopleIncFS,nemasketFS,plymouthArcFS,advocatesSouthCoastalFS,soutShoreFS,bristolArcFS,bamsiFS]),
+        meFS = L.layerGroup([cambridgeFS,bayCoveFS,vinfenFS,workIncFS,projectAbleFS,haphiFS,dimockFS,workIncFS,charlesRiverNatickFS,thriveFS,charlesRiverNeedhamFS,norfolkArcFS]),
+        cwFS = L.layerGroup([berkshireArcFS,ucpPittsfieldFS,ucpNorthAdamsFS,pathlightFS,franklinArcFS,quabbinArcFS,multiculturalHolyokeFS,sevenhillsFitchburgFS,centroFitchburgFS,kdMilfordFS,sevenhillsSturbridgeFS,multiculturalSpringfieldFS,newNorthFS,sevenhillsWorcesterFS,centroWorcesterFS]);
+
+      var viewInfo = L.control();
+
+      viewInfo.onAdd = function (mymap) {
+        this._div = L.DomUtil.create("div","viewInfo");
+        this.update();
+        return this._div;
+      };
+
+      viewInfo.update = function(props) {
+        this._div.innerHTML = "<p><i>You are viewing information about:</i></p><h4 id='category'>Text here</h4>"
+      };
+
+      var ne = false;
+      var se = false;
+      var me = false;
+      var cw = false;
+      var region = false;
+      var ao = false;
+      var fs = false;
+
+      function selectAreaOffices(){
+        ao = true;
+        fs = false;
+        document.getElementById('aoButton').classList.add("mapButtonSelected");
+        if (ao == true){
+          document.getElementById('fsButton').classList.remove("mapButtonSelected");
+        }
+        if (region == true) {
+          document.getElementById('areaOffice').style.display = "block";
+          document.getElementById('familySupport').style.display = "none";
+          document.getElementById('selectRegion').style.display = "none";
+          viewInfo.addTo(mymap);
+          window.location.hash='goTo';
+
+          if (ne == true) {
+            document.getElementById('seAreaOffice').style.display = "none";
+            document.getElementById('meAreaOffice').style.display = "none";
+            document.getElementById('cwAreaOffice').style.display = "none";
+            document.getElementById('neAreaOffice').style.display = "block";
+            neAO.addTo(mymap);
+            seAO.removeFrom(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.removeFrom(mymap);
+            seFS.removeFrom(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.addTo(mymap);
+            seSwath.removeFrom(mymap);
+            meSwath.removeFrom(mymap);
+            cwSwath.removeFrom(mymap);
+            document.getElementById('category').innerHTML = "Area Offices in the Northeast region";
+          } else if (se == true) {
+            document.getElementById('neAreaOffice').style.display = "none";
+            document.getElementById('seAreaOffice').style.display = "block";
+            document.getElementById('meAreaOffice').style.display = "none";
+            document.getElementById('cwAreaOffice').style.display = "none";
+            neAO.removeFrom(mymap);
+            seAO.addTo(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.removeFrom(mymap);
+            seFS.removeFrom(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.removeFrom(mymap);
+            seSwath.addTo(mymap);
+            meSwath.removeFrom(mymap);
+            cwSwath.removeFrom(mymap);
+            document.getElementById('category').innerHTML = "Area Offices in the Southeast region";
+          } else if (me == true) {
+            document.getElementById('neAreaOffice').style.display = "none";
+            document.getElementById('seAreaOffice').style.display = "none";
+            document.getElementById('meAreaOffice').style.display = "block";
+            document.getElementById('cwAreaOffice').style.display = "none";
+            neAO.removeFrom(mymap);
+            seAO.removeFrom(mymap);
+            meAO.addTo(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.removeFrom(mymap);
+            seFS.removeFrom(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.removeFrom(mymap);
+            seSwath.removeFrom(mymap);
+            meSwath.addTo(mymap);
+            cwSwath.removeFrom(mymap);
+            document.getElementById('category').innerHTML = "Area Offices in the Metro region";
+          } else {
+            document.getElementById('neAreaOffice').style.display = "none";
+            document.getElementById('seAreaOffice').style.display = "none";
+            document.getElementById('meAreaOffice').style.display = "none";
+            document.getElementById('cwAreaOffice').style.display = "block";
+            neAO.removeFrom(mymap);
+            seAO.removeFrom(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.addTo(mymap);
+            neFS.removeFrom(mymap);
+            seFS.removeFrom(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.removeFrom(mymap);
+            seSwath.removeFrom(mymap);
+            meSwath.removeFrom(mymap);
+            cwSwath.addTo(mymap);
+            document.getElementById('category').innerHTML = "Area Offices in the Central/West region";
+          };
+        } else {
+          document.getElementById('selectRegion').style.display = "block";
+        };
+      }
+
+      function selectFamilySupport(){
+        ao = false;
+        fs = true;
+        document.getElementById('fsButton').classList.add("mapButtonSelected");
+        if (fs == true){
+          document.getElementById('aoButton').classList.remove("mapButtonSelected");
+        }
+        if (region == true) {
+          document.getElementById('familySupport').style.display = "block";
+          document.getElementById('areaOffice').style.display = "none";
+          document.getElementById('selectRegion').style.display = "none";
+          viewInfo.addTo(mymap);
+          window.location.hash='goTo';
+
+          if (ne == true) {
+            document.getElementById('neFamilySupport').style.display = "block";
+            document.getElementById('seFamilySupport').style.display = "none";
+            document.getElementById('meFamilySupport').style.display = "none";
+            document.getElementById('cwFamilySupport').style.display = "none";
+            neAO.removeFrom(mymap);
+            seAO.removeFrom(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.addTo(mymap);
+            seFS.removeFrom(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.addTo(mymap);
+            seSwath.removeFrom(mymap);
+            meSwath.removeFrom(mymap);
+            cwSwath.removeFrom(mymap);
+            document.getElementById('category').innerHTML = "Family Support Centers in the Northeast region";
+          } else if (se == true) {
+            document.getElementById('neFamilySupport').style.display = "none";
+            document.getElementById('seFamilySupport').style.display = "block";
+            document.getElementById('meFamilySupport').style.display = "none";
+            document.getElementById('cwFamilySupport').style.display = "none";
+            neAO.removeFrom(mymap);
+            seAO.removeFrom(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.removeFrom(mymap);
+            seFS.addTo(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.removeFrom(mymap);
+            seSwath.addTo(mymap);
+            meSwath.removeFrom(mymap);
+            cwSwath.removeFrom(mymap);
+            document.getElementById('category').innerHTML = "Family Support Centers in the Southeast region";
+          } else if (me == true) {
+            document.getElementById('neFamilySupport').style.display = "none";
+            document.getElementById('seFamilySupport').style.display = "none";
+            document.getElementById('meFamilySupport').style.display = "block";
+            document.getElementById('cwFamilySupport').style.display = "none";
+            neAO.removeFrom(mymap);
+            seAO.removeFrom(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.removeFrom(mymap);
+            seFS.removeFrom(mymap);
+            meFS.addTo(mymap);
+            cwFS.removeFrom(mymap);
+            neSwath.removeFrom(mymap);
+            seSwath.removeFrom(mymap);
+            meSwath.addTo(mymap);
+            cwSwath.removeFrom(mymap);
+            document.getElementById('category').innerHTML = "Family Support Centers in the Metro region";
+          } else {
+            document.getElementById('neFamilySupport').style.display = "none";
+            document.getElementById('seFamilySupport').style.display = "none";
+            document.getElementById('meFamilySupport').style.display = "none";
+            document.getElementById('cwFamilySupport').style.display = "block";
+            neAO.removeFrom(mymap);
+            seAO.removeFrom(mymap);
+            meAO.removeFrom(mymap);
+            cwAO.removeFrom(mymap);
+            neFS.removeFrom(mymap);
+            seFS.removeFrom(mymap);
+            meFS.removeFrom(mymap);
+            cwFS.addTo(mymap);
+            neSwath.removeFrom(mymap);
+            seSwath.removeFrom(mymap);
+            meSwath.removeFrom(mymap);
+            cwSwath.addTo(mymap);
+            document.getElementById('category').innerHTML = "Family Support Centers in the Central/West region";
+          };
+        } else {
+          document.getElementById('selectRegion').style.display = "block";
+        };
+      }
+
+      function northeastInfo() {
+        document.getElementById('neInfo').style.display = "block";
+        document.getElementById('seInfo').style.display = "none";
+        document.getElementById('meInfo').style.display = "none";
+        document.getElementById('cwInfo').style.display = "none";
+        ne = true;
+        se = false;
+        me = false;
+        cw = false;
+        region = true;
+        mymap.flyTo([42.5846698,-71.1628364],9.5);
+        neMarker.addTo(mymap);
+        seMarker.removeFrom(mymap);
+        meMarker.removeFrom(mymap);
+        cwMarker.removeFrom(mymap);
+        if (ao == true) {
+          selectAreaOffices();
+          neAO.addTo(mymap);
+          seAO.removeFrom(mymap);
+          meAO.removeFrom(mymap);
+          cwAO.removeFrom(mymap);
+        } else if (fs == true) {
+          selectFamilySupport();
+          neFS.addTo(mymap);
+          seFS.removeFrom(mymap);
+          meFS.removeFrom(mymap);
+          cwFS.removeFrom(mymap);
+        };
+      }
+
+      function southeastInfo() {
+        document.getElementById('neInfo').style.display = "none";
+        document.getElementById('seInfo').style.display = "block";
+        document.getElementById('meInfo').style.display = "none";
+        document.getElementById('cwInfo').style.display = "none";
+        ne = false;
+        se = true;
+        me = false;
+        cw = false;
+        region = true;
+        mymap.flyTo([41.8493324,-71.0506253],8.5);
+        neMarker.removeFrom(mymap);
+        seMarker.addTo(mymap);
+        meMarker.removeFrom(mymap);
+        cwMarker.removeFrom(mymap);
+        if (ao == true) {
+          selectAreaOffices();
+          neAO.removeFrom(mymap);
+          seAO.addTo(mymap);
+          meAO.removeFrom(mymap);
+          cwAO.removeFrom(mymap);
+        } else if (fs == true) {
+          selectFamilySupport();
+          neFS.removeFrom(mymap);
+          seFS.addTo(mymap);
+          meFS.removeFrom(mymap);
+          cwFS.removeFrom(mymap);
+        };
+      }
+
+      function metroInfo() {
+        document.getElementById('neInfo').style.display = "none";
+        document.getElementById('seInfo').style.display = "none";
+        document.getElementById('meInfo').style.display = "block";
+        document.getElementById('cwInfo').style.display = "none";
+        ne = false;
+        se = false;
+        me = true;
+        cw = false;
+        region = true;
+        mymap.flyTo([42.2801032,-71.2607653],9.5);
+        neMarker.removeFrom(mymap);
+        seMarker.removeFrom(mymap);
+        meMarker.addTo(mymap);
+        cwMarker.removeFrom(mymap);
+        if (ao == true) {
+          selectAreaOffices();
+          neAO.removeFrom(mymap);
+          seAO.removeFrom(mymap);
+          meAO.addTo(mymap);
+          cwAO.removeFrom(mymap);
+        } else if (fs == true) {
+          selectFamilySupport();
+          neFS.removeFrom(mymap);
+          seFS.removeFrom(mymap);
+          meFS.addTo(mymap);
+          cwFS.removeFrom(mymap);
+        };
+      }
+
+      function centralInfo() {
+        document.getElementById('neInfo').style.display = "none";
+        document.getElementById('seInfo').style.display = "none";
+        document.getElementById('meInfo').style.display = "none";
+        document.getElementById('cwInfo').style.display = "block";
+        ne = false;
+        se = false;
+        me = false;
+        cw = true;
+        region = true;
+        mymap.flyTo([42.3532288,-72.4063099],8.5);
+        neMarker.removeFrom(mymap);
+        seMarker.removeFrom(mymap);
+        meMarker.removeFrom(mymap);
+        cwMarker.addTo(mymap);
+        if (ao == true) {
+          selectAreaOffices();
+          neAO.removeFrom(mymap);
+          seAO.removeFrom(mymap);
+          meAO.removeFrom(mymap);
+          cwAO.addTo(mymap);
+        } else if (fs == true) {
+          selectFamilySupport();
+          neFS.removeFrom(mymap);
+          seFS.removeFrom(mymap);
+          meFS.removeFrom(mymap);
+          cwFS.addTo(mymap);
+        };
+      }
+
+      function variableCheck() {
+        console.log(`ne = ${ne}, se = ${se}, me = ${me}, cw = ${cw}, region = ${region}, ao = ${ao}, fs = ${fs}`);
+      }
+
+    </script>
+  </body>
+</html>
