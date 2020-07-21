@@ -86,8 +86,10 @@
           <div class="mapColumn map" id="regionsMap"></div>
           <div class="mapColumn mapAside">
             <p class="mapIntro">Learn more about...</p>
-            <button type="button" class="mapButton" id="aoButton" onclick="selectAreaOffices()">Area Office Locations</button>sd
-            <button type="button" class="mapButton" id="fsButton" onclick="selectFamilySupport()">Family Support Centers</button>
+            <div id="mapButtonsDiv">
+              <button type="button" class="mapButton" id="aoButton" onclick="selectAreaOffices()">Area Office Locations</button>
+              <button type="button" class="mapButton" id="fsButton" onclick="selectFamilySupport()">Family Support Centers</button>
+            </div>
             <h3 class="errorMessage" id="selectRegion">Please select a region from the menu above</h3>
           </div>
         </div>
