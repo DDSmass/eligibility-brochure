@@ -74,7 +74,7 @@ li{
 
 .buttons{
   position: relative;
-  height: 250px;
+  min-height: 250px;
   background-color: #f2f2f2;
   margin: -50px -9.2vw 0px;
   z-index: 2;
@@ -261,6 +261,10 @@ li{
   float: right;
 }
 
+.mobile{
+  display: none;
+}
+
 .moreLink{
   font-size: 1.15rem;
   color: #14558f;
@@ -409,6 +413,10 @@ li{
     margin-bottom: 75px;
   }
 
+  .titleText{
+    font-size: 2rem;
+  }
+
   #mapButtonsDiv{
     width: 100%;
     display: flex;
@@ -427,8 +435,18 @@ li{
 }
 
 @media only screen and (max-width: 768px) {
-  .column{
+  .body{
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 
+  .buttons{
+    padding-bottom: 30px;
+  }
+
+  .desktop{
+    display: none;
   }
 
   .headerText{
@@ -436,8 +454,53 @@ li{
     font-size: 1em;
   }
 
-  #titleText{
+  .mobile{
+    display: block;
+  }
+
+  .navText{
+    margin-right: 7.7vw;
+    width: 84.6vw;
+    font-size: 5vw;
+  }
+
+  .sectionIntro{
+    width: 1000px;
+    display: flex;
+    align-items: center;
+  }
+
+  .sectionIntro h1{
+    margin-top: 0px;
+    font-size: 1.75em;
+  }
+
+  .titleText{
     font-size: 1.25em;
+    display: inline-block;
+    margin-top: 0px;
+  }
+
+  #regionButtons{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #regionButtons button{
+    width: 200px;
+    margin: 10px 0px 0px 0px;
+  }
+
+  #regionButtons button:first-child{
+    margin-top: 75px;
+  }
+
+
+  .mapTool{
+    display: none;
   }
 
 }
