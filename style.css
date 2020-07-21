@@ -405,6 +405,10 @@ li{
     margin: 0px;
   }
 
+  .mapTool{
+    margin-bottom: 75px;
+  }
+
   #mapButtonsDiv{
     width: 100%;
     display: flex;
