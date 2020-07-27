@@ -107,6 +107,7 @@ li{
 
 .container{
   min-height: 98vh;
+  width: 98vw;
   position: relative;
   border-bottom: 2vh #f2f2f2 solid;
   padding-bottom: 0px;
@@ -261,8 +262,31 @@ li{
   float: right;
 }
 
-.mobile{
-  display: none;
+.mobileButton{
+  min-height: 70px;
+  /*Note, width is not included here because it may not apply to all instances of buttons the same. It appears as a property of the id, below.*/
+  margin-top: 90px;
+  margin-left: 1.5vw;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #12558f;
+  background-color: #e8eef4;
+  border: 3px solid #8aaac7;
+  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.25);
+  text-decoration: underline rgba(138,170,199,0) 2px;
+  transition: text-decoration 0.4s ease;
+  cursor: pointer;
+}
+
+.mobileButton:hover{
+  text-decoration: underline rgba(138,170,199,1) 2px;
+}
+
+.mobileButtonDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .moreLink{
@@ -376,6 +400,12 @@ li{
   text-transform: uppercase;
 }
 
+
+
+.mobile{
+  display: none;
+}
+
 @media only screen and (max-width: 1080px) {
 
   .map{
@@ -435,27 +465,39 @@ li{
 }
 
 @media only screen and (max-width: 768px) {
+  .additionalColumn{
+    float: none;
+    width: auto;
+  }
+
+  .additionalColumn *{
+    margin-top: 2px;
+    margin-bottom: 7px;
+  }
+
+  .additionalColumn h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
   .body{
-    width: 100%;
-    margin-left: 15px;
-    margin-right: 15px;
+    width: 90vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    /*display: flex;*/
   }
 
   .buttons{
     padding-bottom: 30px;
   }
 
-  .desktop{
-    display: none;
+  .header{
+    width: 100vw;
   }
 
   .headerText{
     margin-left: 25px;
     font-size: 1em;
-  }
-
-  .mobile{
-    display: block;
   }
 
   .navText{
@@ -496,6 +538,14 @@ li{
 
   #regionButtons button:first-child{
     margin-top: 75px;
+  }
+
+  .desktop{
+    display: none;
+  }
+
+  .mobile{
+    display: block;
   }
 
 }

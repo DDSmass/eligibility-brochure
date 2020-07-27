@@ -22,7 +22,7 @@
         <p class="navText mobile"><a href="https://www.mass.gov/lists/dds-eligibility-forms" target="_blank">DDS Eligibility Application</a><span class="greenArrow">></span></p>
       </div>
       <div class="body">
-        <h4 class="headerText">Mission Statement: The Department is dedicated to creating, in partnership with others, innovative and genuine opportunities for individuals with intellectual disabilities to participate fully and meaningfully in, and contribute to, their communities as valued members.</h4>
+        <h4 class="headerText desktop">Mission Statement: The Department is dedicated to creating, in partnership with others, innovative and genuine opportunities for individuals with intellectual disabilities to participate fully and meaningfully in, and contribute to, their communities as valued members.</h4>
         <div class="divider"></div>
         <div class="info">
           <h2 class="infoTitle">Overview</h2>
@@ -73,16 +73,21 @@
             </ol>
             <p><a href="https://www.mass.gov/doc/115-cmr-6-eligibility-individual-support-planning-and-appeals/download#%5B%7B%22num%22%3A5%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22Fit%22%7D%5D" target="_blank">Learn more</a></p>
         </div>
-        <div class="sectionIntro">
-          <h1>Select your region</h1>
+        <div class="desktop">
+          <div class="sectionIntro">
+            <h1>Select your region</h1>
+          </div>
+          <div class="buttons" id="regionButtons">
+            <button type="button" onclick="northeastInfo()" onmouseover="neMouseover()" onmouseout="normalStyle()">Northeast</button>
+            <button type="button" onclick="southeastInfo()" onmouseover="seMouseover()" onmouseout="normalStyle()">Southeast</button>
+            <button type="button" onclick="metroInfo()" onmouseover="meMouseover()" onmouseout="normalStyle()">Metro</button>
+            <button type="button" onclick="centralInfo()" onmouseover="cwMouseover()" onmouseout="normalStyle()">Central/West</button>
+          </div>
         </div>
-        <div class="buttons" id="regionButtons">
-          <button type="button" onclick="northeastInfo()" onmouseover="neMouseover()" onmouseout="normalStyle()">Northeast</button>
-          <button type="button" onclick="southeastInfo()" onmouseover="seMouseover()" onmouseout="normalStyle()">Southeast</button>
-          <button type="button" onclick="metroInfo()" onmouseover="meMouseover()" onmouseout="normalStyle()">Metro</button>
-          <button type="button" onclick="centralInfo()" onmouseover="cwMouseover()" onmouseout="normalStyle()">Central/West</button>
+        <div class="mobileButtonDiv">
+          <button class="mobileButton mobile" type="button" onclick="mobileMap()">Learn more about your region</button>
         </div>
-        <div class="mapTool">
+        <div class="mapTool desktop">
           <a name="goTo"></a>
           <div class="mapColumn map" id="regionsMap"></div>
           <div class="mapColumn mapAside">
@@ -94,13 +99,13 @@
             <h3 class="errorMessage" id="selectRegion">Please select a region from the menu above</h3>
           </div>
         </div>
-        <div class="mapCaption">
+        <div class="mapCaption desktop">
           <div class="officeInfo" id="neInfo"><h4>Northeast Region: </h4><p>Regional Eligibility Coordinator | Hogan Regional Center | PO Box A | Hathorne, MA 01937<p><br><i>Intake Referral Number:</i> 978-774-5000 ext. 850 | <i>Fax Number:</i> 978-739-0420 </div>
           <div class="officeInfo" id="seInfo"><h4>Southeast Region: </h4><p>Regional Eligibility Coordinator | 151 Campanelli Drive, Suite B | Middleboro, MA 02346<p><br><i>Intake Referral Number:</i> 978-774-5000 ext. 850 | <i>Fax Number:</i> 978-739-0420 </div>
           <div class="officeInfo" id="meInfo"><h4>Metro Region: </h4><p>Regional Eligibility Coordinator | 411 Waverley Oaks Road, Suite 304 | Waltham, MA 02452Intake Referral <p><br><i>Intake Referral Number:</i> 978-774-5000 ext. 850 | <i>Fax Number:</i> 978-739-0420 </div>
           <div class="officeInfo" id="cwInfo"><h4>Central/West Region: </h4><p>Regional Eligibility Coordinator | Central West Region | 140 High St. Suite 301 | Springfield, MA 01105<p><br><i>Intake Referral Number:</i> 13-205-0940 | <i>Fax Number:</i> 413-205-1608 </div>
         </div>
-        <div class="infoBox">
+        <div class="infoBox desktop">
           <div id="areaOffice">
             <h2 class="infoTitle">Area Offices</h2>
             <div class="areaOfficeInfo" id="neAreaOffice">
