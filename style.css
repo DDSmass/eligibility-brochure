@@ -268,7 +268,7 @@ li{
   margin-top: 90px;
   margin-left: 1.5vw;
   font-family: Montserrat, Helvetica, Arial, sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #12558f;
   background-color: #e8eef4;
@@ -325,31 +325,6 @@ li{
 
 .navText a:visited{
   color: black;
-}
-
-.navTextMobile{
-  min-height: 70px;
-  /*Note, width is not included here because it may not apply to all instances of buttons the same. It appears as a property of the id, below.*/
-  margin-top: 15px;
-  margin-left: 1.5vw;
-  font-family: Montserrat, Helvetica, Arial, sans-serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #12558f;
-  background-color: #e8eef4;
-  border: 3px solid #8aaac7;
-  box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.25);
-  text-decoration: underline rgba(138,170,199,0) 0px;
-  transition: text-decoration 0.4s ease;
-  cursor: pointer;
-}
-
-.navTextMobile:hover{
-  text-decoration: underline rgba(138,170,199,1) 2px;
-}
-
-.navTextMobile:hover{
-  text-decoration: underline rgba(138,170,199,1) 2px;
 }
 
 .officeInfo{
@@ -534,7 +509,7 @@ li{
   }
 
   .infoSubHead{
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .collapsible{
