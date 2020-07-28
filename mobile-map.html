@@ -2,9 +2,488 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta charset="utf-8">
+    <title>DDS Eligibility Map</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="mapStyle.css"/>
+    <script src="js/northeast.js"></script>
+    <script src="js/southeast.js"></script>
+    <script src="js/metro.js"></script>
+    <script src="js/centralwest.js"></script>
     <title></title>
   </head>
   <body>
+    <div id="regionsMap"></div>
+    <div id="portraitMode">
+      <h1 class="portraitText">Please rotate your phone</h1>
+    </div>
 
+    <script>
+
+
+          var mymap = L.map('regionsMap',{zoomSnap:0.5}).setView([42.2229558, -71.5521811], 7.5);
+
+          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWJsZWljaGZlbGQiLCJhIjoiY2p1azZ3dGoxMXN2ZjQ1bzI0Z3U5aDFqZCJ9.aprixnlrY_kPCaj-4H3XSw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+          }).addTo(mymap);
+
+          var DdsIcon = L.Icon.extend({
+            options: {
+              shadowUrl: 'images/shadow.png',
+              iconSize: [22,40],
+              shadowSize: [28.5,15],
+              iconAnchor: [10.9615,39.5],
+              shadowAnchor: [0,14.8936],
+              popupAnchor: [0,-30]
+            }
+          });
+
+          var neIcon = new DdsIcon({iconUrl:'images/ne.png'}),
+            seIcon = new DdsIcon({iconUrl:'images/se.png'}),
+            meIcon = new DdsIcon({iconUrl:'images/me.png'}),
+            cwIcon = new DdsIcon({iconUrl:'images/cw.png'}),
+            aoIcon = new DdsIcon({iconUrl:'images/ao.png'}),
+            fsIcon = new DdsIcon({iconUrl:'images/fs.png'});
+
+          var neStyle = {
+            "color": "#e17273",
+            "weight": 2,
+            "opacity": 0.45,
+            "fillOpacity": 0.3,
+            "className": "regionBlock"
+          };
+
+          var seStyle = {
+            "color": "#8cc1bd",
+            "weight": 2,
+            "opacity": 0.45,
+            "fillOpacity": 0.3,
+            "className": "regionBlock"
+          };
+
+          var meStyle = {
+            "color": "#ee9e4e",
+            "weight": 2,
+            "opacity": 0.45,
+            "fillOpacity": 0.3,
+            "className": "regionBlock"
+          };
+
+          var cwStyle = {
+            "color": "#6b8eb3",
+            "weight": 2,
+            "opacity": 0.45,
+            "fillOpacity": 0.3,
+            "className": "regionBlock"
+          };
+
+          var neSwath = L.geoJSON(neBlock, {style: neStyle}).addTo(mymap).on("click", northeastInfo);
+          var seSwath = L.geoJSON(seBlock, {style: seStyle}).addTo(mymap).on("click", southeastInfo);
+          var meSwath = L.geoJSON(meBlock, {style: meStyle}).addTo(mymap).on("click", metroInfo);
+          var cwSwath = L.geoJSON(cwBlock, {style: cwStyle}).addTo(mymap).on("click", centralInfo);
+
+          var neMarker = L.marker([42.5856503,-70.9726073],{icon:neIcon}).addTo(mymap).bindPopup("<p><b>Northeast Regional Office</b></p><p>450 Maple St. | Hathorne, MA 01923</p>"),
+            seMarker = L.marker([41.9122701,-70.9621288],{icon:seIcon}).addTo(mymap).bindPopup("<p><b>Southeast Regional Office</b></p><p>151 Campanelli Dr Suite B | Middleborough, MA 02346</p>"),
+            meMarker = L.marker([42.3870657,-71.2013446],{icon:meIcon}).addTo(mymap).bindPopup("<p><b>Metro Regional Office</b></p><p>465 Waverley Oaks Rd #120 | Waltham, MA 02452</p>");
+            cwMarker = L.marker([42.1054866,-72.5816832],{icon:cwIcon}).addTo(mymap).bindPopup("<p><b>Central/West Regional Office</b></p><p>140 High St #301 | Springfield, MA 01105 </p>");
+
+          var berkshireAO = L.marker([42.4480871,-73.2492834],{icon:aoIcon}).bindPopup("<p><b>Berkshire Area Office</b></p><p>333 East Street, 5th Floor | Pittsfield, MA 01201</p>"),
+            brocktonAO = L.marker([42.0845427,-71.0216],{icon:aoIcon}).bindPopup("<p><b>Brockton Area Office</b></p><p>60 Main Street, 3rd Floor | Brockton, MA 02301</p>"),
+            capeCodAO = L.marker([41.6514755,-70.2905595],{icon:aoIcon}).bindPopup("<p><b>Cape Cod/Islands Area Office</b></p><p>181 North Street | Hyannis, MA 02601</p>"),
+            centralMiddlesexAO = L.marker([42.5247506,-71.4343326],{icon:aoIcon}).bindPopup("<p><b>Central Middlesex Area Office</b></p><p>35 Nagog Park, Suite 2000 | Acton, MA 01720</p>"),
+            charlesRiverAO = L.marker([42.3956193,-71.1238772],{icon:aoIcon}).bindPopup("<p><b>Charles River West Area Office</b></p><p>255 Elm Street , Suite 205 | Somerville, MA 02144</p>"),
+            fallRiverAO = L.marker([41.6838798,-71.1387461],{icon:aoIcon}).bindPopup("<p><b>Fall River Area Office</b></p><p>1 Father DeValles Blvd, Suite 203 | Fall River, MA 02723</p>"),
+            franklinAO = L.marker([42.3166537,-72.6339583],{icon:aoIcon}).bindPopup("<p><b>Franklin/Hampshire Area Office</b></p><p>One Roundhouse Plaza, Suite 204 | Northampton, MA 01060</p>"),
+            greaterBostonAO = L.marker([42.235573,-71.1438839],{icon:aoIcon}).bindPopup("<p><b>Greater Boston Area Office</b></p><p>65 Sprague St | Hyde Park, MA 02136</p>"),
+            holyokeAO = L.marker([42.2086457,-72.6092829],{icon:aoIcon}).bindPopup("<p><b>Holyoke/Chicopee Area Office</b></p><p>113 Hampden Street | Holyoke, MA 01040</p>"),
+            lowellAO = L.marker([42.628417,-71.360967],{icon:aoIcon}).bindPopup("<p><b>Lowell Area Office</b></p><p>55 Technology Dr. #202 | Lowell, MA 01851</p>"),
+            merrimackValleyAO = L.marker([42.7029002,-71.1526664],{icon:aoIcon}).bindPopup("<p><b>Merrimack Valley Area Office</b></p><p>280 Merrimack Street, 3rd Floor | Lawrence, MA 01843</p>"),
+            metroNorthAO = L.marker([42.50012,-71.0779053],{icon:aoIcon}).bindPopup("<p><b>Metro North Area Office</b></p><p>200 Harvard Mills Square | Wakefield, MA 01880</p>"),
+            middlesexWestAO = L.marker([42.2787364,-71.41304],{icon:aoIcon}).bindPopup("<p><b>Middlesex West Area Office</b></p><p>300 Howard Street, 1st Floor | Framingham, MA 01702</p>"),
+            newBedfordAO = L.marker([41.6487527,-70.9304311],{icon:aoIcon}).bindPopup("<p><b>New Bedford Area Office</b></p><p>1740 Purchase St. | New Bedford, MA 02740</p>"),
+            newtonAO = L.marker([42.1447138,-71.2608865],{icon:aoIcon}).bindPopup("<p><b>Newton/South Norfolk Area Office</b></p><p>125 West Street | Walpole, MA 02081</p>"),
+            northCentralAO = L.marker([42.5866026,-71.8164278],{icon:aoIcon}).bindPopup("<p><b>North Central Area Office</b></p><p>49 Nursery Lane | Fitchburg, MA 01420</p>"),
+            northShoreAO = L.marker([42.5579041,-70.8890486],{icon:aoIcon}).bindPopup("<p><b>North Shore Area Office</b></p><p>100 Cummings Center, Suite 150 B | Beverly, MA 01915</p>"),
+            plymouthAO = L.marker([41.960145,-70.7020527],{icon:aoIcon}).bindPopup("<p><b>Plymouth Area Office</b></p><p>38 Industrial Park Road , Suite 1 | Plymouth, MA 02360</p>"),
+            southCoastalAO = L.marker([42.2201173,-71.0370058],{icon:aoIcon}).bindPopup("<p><b>South Coastal Area Office</b></p><p>220R Forbes Road | Braintree, MA 02184</p>"),
+            svMilfordAO = L.marker([42.1421981,-71.5467028],{icon:aoIcon}).bindPopup("<p><b>South Valley (Milford) Area Office</b></p><p>194 West St, Suite 9 | Milford, MA 01757</p>"),
+            svSouthbridgeAO = L.marker([42.0772983,-72.0331961],{icon:aoIcon}).bindPopup("<p><b>South Valley (Southbridge) Area Office</b></p><p>1 North Street, Suite C | Southbridge, MA 01550</p>"),
+            springfieldAO = L.marker([42.1058482,-72.594416],{icon:aoIcon}).bindPopup("<p><b>Springfield/Westfield Area Office</b></p><p>436 Dwight Street, Suite 205 | Springfield, MA 01103</p>"),
+            tauntonAO = L.marker([41.8994789,-71.0913815],{icon:aoIcon}).bindPopup("<p><b>Taunton/Attleboro Area Office</b></p><p>21 Spring Street, Suite #1 | Taunton, MA 02780</p>"),
+            worcesterAO = L.marker([42.3113661,-71.776732],{icon:aoIcon}).bindPopup("<p><b>Worcester Area Office</b></p><p>324R Clark Street | Worcester, MA 01606</p>");
+
+          var neAO = L.layerGroup([centralMiddlesexAO,lowellAO,merrimackValleyAO,metroNorthAO,northShoreAO]),
+            seAO = L.layerGroup([brocktonAO,capeCodAO,fallRiverAO,newBedfordAO,plymouthAO,southCoastalAO,tauntonAO]),
+            meAO = L.layerGroup([charlesRiverAO,greaterBostonAO,middlesexWestAO,newtonAO]),
+            cwAO = L.layerGroup([berkshireAO,franklinAO,holyokeAO,northCentralAO,svMilfordAO,svSouthbridgeAO,springfieldAO,worcesterAO]);
+
+          var riversideFS = L.marker([42.4966532,-71.1301514],{icon:fsIcon}).bindPopup("<p><b>Riverside Community Care – Riverside Family Support Center</b></p><p>300 West Cummings Park, Suite 354 | Woburn, MA 01801</p>"),
+            lifelinksFS = L.marker([42.5897111,-71.3220558],{icon:fsIcon}).bindPopup("<p><b>LifeLinks Family Support Center</b></p><p>4 Omni Way | Chelmsford, MA 01824</p>"),
+            monoromFS = L.marker([42.637845,-71.3272619],{icon:fsIcon}).bindPopup("<p><b>Cambodian Mutual Assistance Association of Greater Lowell – Monorom Family Support Program (Cultural/Linguistic-Specific Family Support Center)</b></p><p>465 School Street | Lowell, MA 01851</p>"),
+            merrimackFS = L.marker([42.6909324,-71.1579947],{icon:fsIcon}).bindPopup("<p><b>Fidelity House Human Services – Merrimack Valley Family Support Center</b></p><p>439 Union Street, Suite 401 | Lawrence, MA 01843</p>"),
+            communitasFS = L.marker([42.5176956,-71.0477543],{icon:fsIcon}).bindPopup("<p><b>Communitas Family Resource Center</b></p><p>60D Audubon Road | Wakefield, MA 01880</p>"),
+            neArcFS = L.marker([42.5665086,-70.9697786],{icon:fsIcon}).bindPopup("<p><b>Northeast Arc Family Resources</b></p><p>6 Southside Road | Danvers, MA 01923</p>"),
+            bridgewellFS = L.marker([42.4644268,-70.9424577],{icon:fsIcon}).bindPopup("<p><b>Bridgewell Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>66 Silsbee Street | Lynn, MA 01901</p>"),
+            brocktonArcFS = L.marker([42.0529212,-71.0680295],{icon:fsIcon}).bindPopup("<p><b>Brockton Area Arc</b></p><p>1250 West Chestnut Street | Brockton, MA 02301</p>"),
+            kdCapeCodFS = L.marker([41.6833582,-70.2603677],{icon:fsIcon}).bindPopup("<p><b>Cape Cod and the Islands Area – Kennedy-Donovan Center</b></p><p>30 Ansel Hallet Road | West Yarmouth, MA 02673</p>"),
+            mvCommunityServicesFS = L.marker([41.4480633,-70.6098006],{icon:fsIcon}).bindPopup("<p><b>Martha’s Vineyard Community Services</b></p><p>111 Edgartown Road | Vineyard Haven, MA 02568</p>"),
+            peopleIncFS = L.marker([41.6838798,-71.1387461],{icon:fsIcon}).bindPopup("<p><b>People Inc. Family Support Center</b></p><p>1 Father DeValles Boulevard, Suite 401 | Fall River, MA 02723</p>"),
+            nemasketFS = L.marker([41.6562177,-70.8439609],{icon:fsIcon}).bindPopup("<p><b>Nemasket – Family Connections Center</b></p><p>109 Fairhaven Road | Mattapoisett, MA 02739</p>"),
+            plymouthArcFS = L.marker([41.9559517,-70.6954778],{icon:fsIcon}).bindPopup("<p><b>The Arc of Greater Plymouth</b></p><p>52 Armstrong Road | Plymouth, MA 02360</p>"),
+            advocatesSouthCoastalFS = L.marker([42.196466,-71.0630677],{icon:fsIcon}).bindPopup("<p><b>Advocates – South Coastal Family Support Center</b></p><p>1189 R North Main Street | Randolph, MA 02368</p>"),
+            soutShoreFS = L.marker([42.1805416,-70.9714039],{icon:fsIcon}).bindPopup("<p><b>South Shore Support Services</b></p><p>435 Columbian Street | Weymouth, MA 02190</p>"),
+            bristolArcFS = L.marker([41.9429099,-71.2802598],{icon:fsIcon}).bindPopup("<p><b>The Arc of Bristol County</b></p><p>141 Park Street | Attleboro, MA 02703</p>"),
+            bamsiFS = L.marker([42.156118,-70.8570128],{icon:fsIcon}).bindPopup("<p><b>BAMSI Family Support Center</b></p><p>155 Webster Street – Unit D | Hanover, MA 02339</p>"),
+            cambridgeFS = L.marker([42.3716041,-71.0825043],{icon:fsIcon}).bindPopup("<p><b>Cambridge Family and Children’s Service</b></p><p>60 Gore Street | Cambridge, MA 02141</p>"),
+            bayCoveFS = L.marker([42.3636676,-71.0618547],{icon:fsIcon}).bindPopup("<p><b>Bay Cove Family Support Center</b></p><p>66 Canal Street | Boston, MA 02114</p>"),
+            vinfenFS = L.marker([42.2417453,-71.1480151],{icon:fsIcon}).bindPopup("<p><b>Vinfen Corp. DDS Family Support Center</b></p><p>260 Milton St, Suite 101 | Dedham Ma 02026</p>"),
+            workIncFS = L.marker([42.3034,-71.0570726],{icon:fsIcon}).bindPopup("<p><b>Work Inc. Family Support Center</b></p><p>25 Beach Street | Dorchester, MA 02122</p>"),
+            projectAbleFS = L.marker([42.3480732,-71.066191],{icon:fsIcon}).bindPopup("<p><b>Advocates – Project Able (Cultural/Linguistic-Specific Family Support Center)</b></p><p>888 Washington Street Suite 102 | Boston, MA 02111</p>"),
+            haphiFS = L.marker([42.2692064,-71.0961734],{icon:fsIcon}).bindPopup("<p><b>HAPHI – Haitian Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>1603 Blue Hill Avenue | Mattapan, MA 02126</p>"),
+            dimockFS = L.marker([42.3197994,-71.0998306],{icon:fsIcon}).bindPopup("<p><b>Dimock Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>55 Dimock Street | Roxbury, MA 02119</p>"),
+            solidaridadFS = L.marker([42.3034,-71.0570726],{icon:fsIcon}).bindPopup("<p><b>Work Inc. – Solidaridad (Cultural/Linguistic-Specific Family Support Center)</b></p><p>25 Beach Street | Dorchester, MA 02122</p>"),
+            charlesRiverNatickFS = L.marker([42.2956433,-71.3908383],{icon:fsIcon}).bindPopup("<p><b>Charles River Center</b></p><p>4 Strathmore Road | Natick, MA 01760</p>"),
+            thriveFS = L.marker([42.3404993,-71.5867311],{icon:fsIcon}).bindPopup("<p><b>Thrive Support & Advocacy</b></p><p>65 Boston Post Road West Suite 220 | Marlborough, MA 01752</p>"),
+            charlesRiverNeedhamFS = L.marker([42.2891301,-71.2571422],{icon:fsIcon}).bindPopup("<p><b>Charles River Center</b></p><p>59 East Militia Heights Road | Needham, MA 02492</p>"),
+            norfolkArcFS = L.marker([42.213274,-71.2022272],{icon:fsIcon}).bindPopup("<p><b>The Arc of South Norfolk Family Support Center</b></p><p>789 Clapboardtree Street | Westwood, MA 02090</p>"),
+            berkshireArcFS = L.marker([42.4453369,-73.246732],{icon:fsIcon}).bindPopup("<p><b>Berkshire County Arc Central & Southern Berkshire County Family Support Center</b></p><p>46 Elm Street | Pittsfield, MA 01201</p>"),
+            ucpNorthAdamsFS = L.marker([42.6852845,-73.1112855],{icon:fsIcon}).bindPopup("<p><b>UCP Central Berkshire Family Support Center</b></p><p>535 Curran Highway | North Adams, MA 01247</p>"),
+            ucpPittsfieldFS = L.marker([42.4481006,-73.2628297],{icon:fsIcon}).bindPopup("<p><b>UCP Central Berkshire Family Support Center</b></p><p>208 West Street | Pittsfield, MA 01201</p>"),
+            pathlightFS = L.marker([42.33921,-72.6087477],{icon:fsIcon}).bindPopup("<p><b>Pathlight – Family Empowerment</b></p><p>41 Russell Street | Hadley, MA 01035</p>"),
+            franklinArcFS = L.marker([42.6037571,-72.5642167],{icon:fsIcon}).bindPopup("<p><b>The United Arc – Franklin County Family Support Center</b></p><p>294 Avenue A | Turners Falls, MA 01376</p>"),
+            quabbinArcFS = L.marker([42.5938274,-72.2345475],{icon:fsIcon}).bindPopup("<p><b>The United Arc – North Quabbin Family Support Center-GAAAFSN</b></p><p>361 Main Street | Athol, MA 01331</p>"),
+            multiculturalHolyokeFS = L.marker([42.190916,-72.6425875],{icon:fsIcon}).bindPopup("<p><b>Multicultural Community Services Family Support Center</b></p><p>260 Westfield Road | Holyoke, MA 01040</p>"),
+            sevenhillsFitchburgFS = L.marker([42.6018282,-71.8017294],{icon:fsIcon}).bindPopup("<p><b>Seven Hills Family Services – Family Support Center of North Central</b></p><p>1460 John Fitch Highway | Fitchburg, MA 01402</p>"),
+            centroFitchburgFS = L.marker([42.5829969,-71.8008127],{icon:fsIcon}).bindPopup("<p><b>Centro – Multicultural Family Development Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>437 Main Street | Fitchburg, MA 01420</p>"),
+            kdMilfordFS = L.marker([42.1402027,-71.4894031],{icon:fsIcon}).bindPopup("<p><b>Kennedy Donovan Center</b></p><p>1 Maple Street | Milford, MA 01757</p>"),
+            sevenhillsSturbridgeFS = L.marker([42.1181335,-72.0660875],{icon:fsIcon}).bindPopup("<p><b>Seven Hills Family Services – Family Support Center of South Valley</b></p><p>208 Charlton Road | Sturbridge, MA 01566</p>"),
+            multiculturalSpringfieldFS = L.marker([42.1153894,-72.5301584],{icon:fsIcon}).bindPopup("<p><b>Multicultural Community Services Family Support Center</b></p><p>1000 Wilbraham Road | Springfield, MA 01109</p>"),
+            newNorthFS = L.marker([42.111015,-72.5654644],{icon:fsIcon}).bindPopup("<p><b>New North Citizen’s Council, Inc – New North Family Support Center (Cultural/Linguistic-Specific Family Support Center)</b></p><p>11 Wilbraham Road 2nd Floor | Springfield, MA 01109</p>"),
+            sevenhillsWorcesterFS = L.marker([42.3208206,-71.7976127],{icon:fsIcon}).bindPopup("<p><b>Seven Hills Family Services – Family Support Center of Greater Worcester</b></p><p>799 West Boylston Street | Worcester, MA 01606</p>"),
+            centroWorcesterFS = L.marker([42.257671,-71.80814],{icon:fsIcon}).bindPopup("<p><b>Centro – Worcester Multicultural Family Support Center (Cultural/Linguistic-Specific Family) Support Center</b></p><p>11 Sycamore Street | Worcester, MA 01608</p>");
+
+          var neFS = L.layerGroup([riversideFS,lifelinksFS,monoromFS,merrimackFS,communitasFS,neArcFS,bridgewellFS]),
+            seFS = L.layerGroup([brocktonArcFS,kdCapeCodFS,mvCommunityServicesFS,peopleIncFS,nemasketFS,plymouthArcFS,advocatesSouthCoastalFS,soutShoreFS,bristolArcFS,bamsiFS]),
+            meFS = L.layerGroup([cambridgeFS,bayCoveFS,vinfenFS,workIncFS,projectAbleFS,haphiFS,dimockFS,workIncFS,charlesRiverNatickFS,thriveFS,charlesRiverNeedhamFS,norfolkArcFS]),
+            cwFS = L.layerGroup([berkshireArcFS,ucpPittsfieldFS,ucpNorthAdamsFS,pathlightFS,franklinArcFS,quabbinArcFS,multiculturalHolyokeFS,sevenhillsFitchburgFS,centroFitchburgFS,kdMilfordFS,sevenhillsSturbridgeFS,multiculturalSpringfieldFS,newNorthFS,sevenhillsWorcesterFS,centroWorcesterFS]);
+
+          var viewInfo = L.control();
+
+          viewInfo.onAdd = function (mymap) {
+            this._div = L.DomUtil.create("div","viewInfo");
+            this.update();
+            return this._div;
+          };
+
+          viewInfo.update = function(props) {
+            this._div.innerHTML = "<p><i>You are viewing information about:</i></p><h4 id='category'>Text here</h4>"
+          };
+
+          var ne = false;
+          var se = false;
+          var me = false;
+          var cw = false;
+          var region = false;
+          var ao = false;
+          var fs = false;
+
+          function selectAreaOffices(){
+            ao = true;
+            fs = false;
+            document.getElementById('aoButton').classList.add("mapButtonSelected");
+            if (ao == true){
+              document.getElementById('fsButton').classList.remove("mapButtonSelected");
+            }
+            if (region == true) {
+              document.getElementById('areaOffice').style.display = "block";
+              document.getElementById('familySupport').style.display = "none";
+              document.getElementById('selectRegion').style.display = "none";
+              viewInfo.addTo(mymap);
+              window.location.hash='goTo';
+
+              if (ne == true) {
+                document.getElementById('seAreaOffice').style.display = "none";
+                document.getElementById('meAreaOffice').style.display = "none";
+                document.getElementById('cwAreaOffice').style.display = "none";
+                document.getElementById('neAreaOffice').style.display = "block";
+                neAO.addTo(mymap);
+                seAO.removeFrom(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.removeFrom(mymap);
+                seFS.removeFrom(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.addTo(mymap);
+                seSwath.removeFrom(mymap);
+                meSwath.removeFrom(mymap);
+                cwSwath.removeFrom(mymap);
+                document.getElementById('category').innerHTML = "Area Offices in the Northeast region";
+              } else if (se == true) {
+                document.getElementById('neAreaOffice').style.display = "none";
+                document.getElementById('seAreaOffice').style.display = "block";
+                document.getElementById('meAreaOffice').style.display = "none";
+                document.getElementById('cwAreaOffice').style.display = "none";
+                neAO.removeFrom(mymap);
+                seAO.addTo(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.removeFrom(mymap);
+                seFS.removeFrom(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.removeFrom(mymap);
+                seSwath.addTo(mymap);
+                meSwath.removeFrom(mymap);
+                cwSwath.removeFrom(mymap);
+                document.getElementById('category').innerHTML = "Area Offices in the Southeast region";
+              } else if (me == true) {
+                document.getElementById('neAreaOffice').style.display = "none";
+                document.getElementById('seAreaOffice').style.display = "none";
+                document.getElementById('meAreaOffice').style.display = "block";
+                document.getElementById('cwAreaOffice').style.display = "none";
+                neAO.removeFrom(mymap);
+                seAO.removeFrom(mymap);
+                meAO.addTo(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.removeFrom(mymap);
+                seFS.removeFrom(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.removeFrom(mymap);
+                seSwath.removeFrom(mymap);
+                meSwath.addTo(mymap);
+                cwSwath.removeFrom(mymap);
+                document.getElementById('category').innerHTML = "Area Offices in the Metro region";
+              } else {
+                document.getElementById('neAreaOffice').style.display = "none";
+                document.getElementById('seAreaOffice').style.display = "none";
+                document.getElementById('meAreaOffice').style.display = "none";
+                document.getElementById('cwAreaOffice').style.display = "block";
+                neAO.removeFrom(mymap);
+                seAO.removeFrom(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.addTo(mymap);
+                neFS.removeFrom(mymap);
+                seFS.removeFrom(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.removeFrom(mymap);
+                seSwath.removeFrom(mymap);
+                meSwath.removeFrom(mymap);
+                cwSwath.addTo(mymap);
+                document.getElementById('category').innerHTML = "Area Offices in the Central/West region";
+              };
+            } else {
+              document.getElementById('selectRegion').style.display = "block";
+            };
+          }
+
+          function selectFamilySupport(){
+            ao = false;
+            fs = true;
+            document.getElementById('fsButton').classList.add("mapButtonSelected");
+            if (fs == true){
+              document.getElementById('aoButton').classList.remove("mapButtonSelected");
+            }
+            if (region == true) {
+              document.getElementById('familySupport').style.display = "block";
+              document.getElementById('areaOffice').style.display = "none";
+              document.getElementById('selectRegion').style.display = "none";
+              viewInfo.addTo(mymap);
+              window.location.hash='goTo';
+
+              if (ne == true) {
+                document.getElementById('neFamilySupport').style.display = "block";
+                document.getElementById('seFamilySupport').style.display = "none";
+                document.getElementById('meFamilySupport').style.display = "none";
+                document.getElementById('cwFamilySupport').style.display = "none";
+                neAO.removeFrom(mymap);
+                seAO.removeFrom(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.addTo(mymap);
+                seFS.removeFrom(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.addTo(mymap);
+                seSwath.removeFrom(mymap);
+                meSwath.removeFrom(mymap);
+                cwSwath.removeFrom(mymap);
+                document.getElementById('category').innerHTML = "Family Support Centers in the Northeast region";
+              } else if (se == true) {
+                document.getElementById('neFamilySupport').style.display = "none";
+                document.getElementById('seFamilySupport').style.display = "block";
+                document.getElementById('meFamilySupport').style.display = "none";
+                document.getElementById('cwFamilySupport').style.display = "none";
+                neAO.removeFrom(mymap);
+                seAO.removeFrom(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.removeFrom(mymap);
+                seFS.addTo(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.removeFrom(mymap);
+                seSwath.addTo(mymap);
+                meSwath.removeFrom(mymap);
+                cwSwath.removeFrom(mymap);
+                document.getElementById('category').innerHTML = "Family Support Centers in the Southeast region";
+              } else if (me == true) {
+                document.getElementById('neFamilySupport').style.display = "none";
+                document.getElementById('seFamilySupport').style.display = "none";
+                document.getElementById('meFamilySupport').style.display = "block";
+                document.getElementById('cwFamilySupport').style.display = "none";
+                neAO.removeFrom(mymap);
+                seAO.removeFrom(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.removeFrom(mymap);
+                seFS.removeFrom(mymap);
+                meFS.addTo(mymap);
+                cwFS.removeFrom(mymap);
+                neSwath.removeFrom(mymap);
+                seSwath.removeFrom(mymap);
+                meSwath.addTo(mymap);
+                cwSwath.removeFrom(mymap);
+                document.getElementById('category').innerHTML = "Family Support Centers in the Metro region";
+              } else {
+                document.getElementById('neFamilySupport').style.display = "none";
+                document.getElementById('seFamilySupport').style.display = "none";
+                document.getElementById('meFamilySupport').style.display = "none";
+                document.getElementById('cwFamilySupport').style.display = "block";
+                neAO.removeFrom(mymap);
+                seAO.removeFrom(mymap);
+                meAO.removeFrom(mymap);
+                cwAO.removeFrom(mymap);
+                neFS.removeFrom(mymap);
+                seFS.removeFrom(mymap);
+                meFS.removeFrom(mymap);
+                cwFS.addTo(mymap);
+                neSwath.removeFrom(mymap);
+                seSwath.removeFrom(mymap);
+                meSwath.removeFrom(mymap);
+                cwSwath.addTo(mymap);
+                document.getElementById('category').innerHTML = "Family Support Centers in the Central/West region";
+              };
+            } else {
+              document.getElementById('selectRegion').style.display = "block";
+            };
+          }
+
+          function northeastInfo() {
+            ne = true;
+            se = false;
+            me = false;
+            cw = false;
+            region = true;
+            mymap.flyTo([42.5846698,-71.1628364],9);
+            neMarker.addTo(mymap);
+            seMarker.removeFrom(mymap);
+            meMarker.removeFrom(mymap);
+            cwMarker.removeFrom(mymap);
+            if (ao == true) {
+              selectAreaOffices();
+              neAO.addTo(mymap);
+              seAO.removeFrom(mymap);
+              meAO.removeFrom(mymap);
+              cwAO.removeFrom(mymap);
+            } else if (fs == true) {
+              selectFamilySupport();
+              neFS.addTo(mymap);
+              seFS.removeFrom(mymap);
+              meFS.removeFrom(mymap);
+              cwFS.removeFrom(mymap);
+            };
+          }
+
+          function southeastInfo() {
+            ne = false;
+            se = true;
+            me = false;
+            cw = false;
+            region = true;
+            mymap.flyTo([41.8493324,-71.0506253],8.5);
+            neMarker.removeFrom(mymap);
+            seMarker.addTo(mymap);
+            meMarker.removeFrom(mymap);
+            cwMarker.removeFrom(mymap);
+            if (ao == true) {
+              selectAreaOffices();
+              neAO.removeFrom(mymap);
+              seAO.addTo(mymap);
+              meAO.removeFrom(mymap);
+              cwAO.removeFrom(mymap);
+            } else if (fs == true) {
+              selectFamilySupport();
+              neFS.removeFrom(mymap);
+              seFS.addTo(mymap);
+              meFS.removeFrom(mymap);
+              cwFS.removeFrom(mymap);
+            };
+          }
+
+          function metroInfo() {
+            ne = false;
+            se = false;
+            me = true;
+            cw = false;
+            region = true;
+            mymap.flyTo([42.2801032,-71.2607653],9);
+            neMarker.removeFrom(mymap);
+            seMarker.removeFrom(mymap);
+            meMarker.addTo(mymap);
+            cwMarker.removeFrom(mymap);
+            if (ao == true) {
+              selectAreaOffices();
+              neAO.removeFrom(mymap);
+              seAO.removeFrom(mymap);
+              meAO.addTo(mymap);
+              cwAO.removeFrom(mymap);
+            } else if (fs == true) {
+              selectFamilySupport();
+              neFS.removeFrom(mymap);
+              seFS.removeFrom(mymap);
+              meFS.addTo(mymap);
+              cwFS.removeFrom(mymap);
+            };
+          }
+
+          function centralInfo() {
+            ne = false;
+            se = false;
+            me = false;
+            cw = true;
+            region = true;
+            mymap.flyTo([42.3532288,-72.4063099],8.5);
+            neMarker.removeFrom(mymap);
+            seMarker.removeFrom(mymap);
+            meMarker.removeFrom(mymap);
+            cwMarker.addTo(mymap);
+            if (ao == true) {
+              selectAreaOffices();
+              neAO.removeFrom(mymap);
+              seAO.removeFrom(mymap);
+              meAO.removeFrom(mymap);
+              cwAO.addTo(mymap);
+            } else if (fs == true) {
+              selectFamilySupport();
+              neFS.removeFrom(mymap);
+              seFS.removeFrom(mymap);
+              meFS.removeFrom(mymap);
+              cwFS.addTo(mymap);
+            };
+          }
+
+    </script>
   </body>
 </html>

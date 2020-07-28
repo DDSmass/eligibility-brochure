@@ -277,6 +277,7 @@ li{
   text-decoration: underline rgba(138,170,199,0) 2px;
   transition: text-decoration 0.4s ease;
   cursor: pointer;
+  width: 250px;
 }
 
 .mobileButton:hover{
@@ -329,9 +330,7 @@ li{
 
 .navTextMobile{
   min-height: 70px;
-  /*Note, width is not included here because it may not apply to all instances of buttons the same. It appears as a property of the id, below.*/
   margin-top: 15px;
-  margin-left: 1.5vw;
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -342,6 +341,7 @@ li{
   text-decoration: underline rgba(138,170,199,0) 0px;
   transition: text-decoration 0.4s ease;
   cursor: pointer;
+  width: 250px;
 }
 
 .navTextMobile:hover{
@@ -350,6 +350,11 @@ li{
 
 .navTextMobile:hover{
   text-decoration: underline rgba(138,170,199,1) 2px;
+}
+
+.navTextMobileDiv{
+  display: flex;
+  justify-content: center;
 }
 
 .officeInfo{
@@ -575,7 +580,7 @@ li{
   .collapsible:hover::after, .active::after{
     color: white;
     transform: rotate(90deg);
-    margin-right: -3vw;
+    margin-right: -1vw;
     margin-top: 6px;
   }
 
