@@ -528,7 +528,7 @@ li{
 
   .infoBody {
     padding: 0 3vw;
-    /*display: none;*/
+    display: none;
     overflow: hidden;
     background-color: #f2f2f2;
   }
@@ -541,16 +541,53 @@ li{
     font-size: 1.5rem;
     margin-bottom: 0rem;
     padding: 5px;
+  }
+
+  .infoTitle::after{
+    /*display: none;*/
+  }
+
+  .collapsible{
+    font-size: 1.5rem;
+    margin-bottom: 0rem;
+    padding: 5px;
     transition: all 0.4s ease;
   }
 
-  .infoTitle:hover{
+  .active, .collapsible:hover{
     color: white;
     background-color: #368557;
   }
 
-  .infoTitle::after{
-    display: none;
+  .collapsible::after {
+    content: '\003E';
+    color: #368557;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    font-size: 1.5rem;
+    font-family: Poppins;
+    font-weight: 600;
+    margin-left: 7px;
+    margin-right: 3vw;
+    background-color: rgba(56,133,87,0);
+    min-height: 10px;
+    position: static;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    -webkit-transform: skew(0deg);
+    -ms-transform: skew(0deg);
+    transform: skew(0deg);
+    width: 0em;
+    transform: rotate(0);
+    transition: all .4s ease;
+  }
+
+  .collapsible:hover::after, .active::after{
+    color: white;
+    transform: rotate(90deg);
+    margin-right: -3vw;
+    margin-top: 6px;
   }
 
   .mobileButton{
@@ -597,9 +634,8 @@ li{
     margin-top: 75px;
   }
 
-  #moreInfo:hover{
-    color: black;
-    background-color: rgba(54,133,87,0);
+  #moreInfo::after{
+    display: none;
   }
 
   .desktop{
