@@ -957,7 +957,7 @@
         };
       }
 
-      var coll = document.getElementsByClassName('infoTitle')
+      var coll = document.getElementsByClassName('collapsible')
       var i;
 
       for (i = 0; coll.length; i++) {
@@ -971,6 +971,21 @@
           }
         });
       }
+
+      /*var coll = document.getElementsByClassName('infoSubHead')
+      var i;
+
+      for (i = 0; coll.length; i++) {
+        coll[i].addEventListener("click", function(){
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display == "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }*/
 
       function variableCheck() {
         console.log(`ne = ${ne}, se = ${se}, me = ${me}, cw = ${cw}, region = ${region}, ao = ${ao}, fs = ${fs}`);
