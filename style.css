@@ -533,10 +533,6 @@ li{
     background-color: #f2f2f2;
   }
 
-  .infoSubHead{
-    font-size: 1.25rem;
-  }
-
   .infoTitle{
     font-size: 1.5rem;
     margin-bottom: 0rem;
@@ -547,8 +543,11 @@ li{
     /*display: none;*/
   }
 
+  .infoSubHead{
+    font-size: 1.1rem;
+  }
+
   .collapsible{
-    font-size: 1.5rem;
     margin-bottom: 0rem;
     padding: 5px;
     transition: all 0.4s ease;
@@ -588,6 +587,15 @@ li{
     transform: rotate(90deg);
     margin-right: -3vw;
     margin-top: 6px;
+  }
+
+  .infoSubHead.collapsible::after{
+    margin-top: -6px;
+  }
+
+  .infoSubHead.collapsible:hover::after, .infoSubHead.active::after{
+    margin-right: 5px;
+    margin-top: -12px;
   }
 
   .mobileButton{
