@@ -20,6 +20,11 @@
     <div id="regionsMap"></div>
     <div id="portraitMode">
       <h1 class="portraitText">Please rotate your phone</h1>
+      <img src="images/rotate.gif" alt="a animated graphic of a phone in portrait mode with an arrow directing it to landscape mode" id="rotate">
+    </div>
+    <div id="mapButtonsDiv">
+      <button type="button" class="mapButton" id="aoButton" onclick="selectAreaOffices()">Area Office Locations</button>
+      <button type="button" class="mapButton" id="fsButton" onclick="selectFamilySupport()">Family Support Centers</button>
     </div>
 
     <script>
@@ -204,17 +209,10 @@
               document.getElementById('fsButton').classList.remove("mapButtonSelected");
             }
             if (region == true) {
-              document.getElementById('areaOffice').style.display = "block";
-              document.getElementById('familySupport').style.display = "none";
-              document.getElementById('selectRegion').style.display = "none";
               viewInfo.addTo(mymap);
               window.location.hash='goTo';
 
               if (ne == true) {
-                document.getElementById('seAreaOffice').style.display = "none";
-                document.getElementById('meAreaOffice').style.display = "none";
-                document.getElementById('cwAreaOffice').style.display = "none";
-                document.getElementById('neAreaOffice').style.display = "block";
                 neAO.addTo(mymap);
                 seAO.removeFrom(mymap);
                 meAO.removeFrom(mymap);
@@ -223,16 +221,8 @@
                 seFS.removeFrom(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.addTo(mymap);
-                seSwath.removeFrom(mymap);
-                meSwath.removeFrom(mymap);
-                cwSwath.removeFrom(mymap);
                 document.getElementById('category').innerHTML = "Area Offices in the Northeast region";
               } else if (se == true) {
-                document.getElementById('neAreaOffice').style.display = "none";
-                document.getElementById('seAreaOffice').style.display = "block";
-                document.getElementById('meAreaOffice').style.display = "none";
-                document.getElementById('cwAreaOffice').style.display = "none";
                 neAO.removeFrom(mymap);
                 seAO.addTo(mymap);
                 meAO.removeFrom(mymap);
@@ -241,16 +231,8 @@
                 seFS.removeFrom(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.removeFrom(mymap);
-                seSwath.addTo(mymap);
-                meSwath.removeFrom(mymap);
-                cwSwath.removeFrom(mymap);
                 document.getElementById('category').innerHTML = "Area Offices in the Southeast region";
               } else if (me == true) {
-                document.getElementById('neAreaOffice').style.display = "none";
-                document.getElementById('seAreaOffice').style.display = "none";
-                document.getElementById('meAreaOffice').style.display = "block";
-                document.getElementById('cwAreaOffice').style.display = "none";
                 neAO.removeFrom(mymap);
                 seAO.removeFrom(mymap);
                 meAO.addTo(mymap);
@@ -259,16 +241,8 @@
                 seFS.removeFrom(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.removeFrom(mymap);
-                seSwath.removeFrom(mymap);
-                meSwath.addTo(mymap);
-                cwSwath.removeFrom(mymap);
                 document.getElementById('category').innerHTML = "Area Offices in the Metro region";
               } else {
-                document.getElementById('neAreaOffice').style.display = "none";
-                document.getElementById('seAreaOffice').style.display = "none";
-                document.getElementById('meAreaOffice').style.display = "none";
-                document.getElementById('cwAreaOffice').style.display = "block";
                 neAO.removeFrom(mymap);
                 seAO.removeFrom(mymap);
                 meAO.removeFrom(mymap);
@@ -277,14 +251,10 @@
                 seFS.removeFrom(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.removeFrom(mymap);
-                seSwath.removeFrom(mymap);
-                meSwath.removeFrom(mymap);
-                cwSwath.addTo(mymap);
                 document.getElementById('category').innerHTML = "Area Offices in the Central/West region";
               };
             } else {
-              document.getElementById('selectRegion').style.display = "block";
+              //document.getElementById('selectRegion').style.display = "block";
             };
           }
 
@@ -296,17 +266,10 @@
               document.getElementById('aoButton').classList.remove("mapButtonSelected");
             }
             if (region == true) {
-              document.getElementById('familySupport').style.display = "block";
-              document.getElementById('areaOffice').style.display = "none";
-              document.getElementById('selectRegion').style.display = "none";
               viewInfo.addTo(mymap);
               window.location.hash='goTo';
 
               if (ne == true) {
-                document.getElementById('neFamilySupport').style.display = "block";
-                document.getElementById('seFamilySupport').style.display = "none";
-                document.getElementById('meFamilySupport').style.display = "none";
-                document.getElementById('cwFamilySupport').style.display = "none";
                 neAO.removeFrom(mymap);
                 seAO.removeFrom(mymap);
                 meAO.removeFrom(mymap);
@@ -315,16 +278,8 @@
                 seFS.removeFrom(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.addTo(mymap);
-                seSwath.removeFrom(mymap);
-                meSwath.removeFrom(mymap);
-                cwSwath.removeFrom(mymap);
                 document.getElementById('category').innerHTML = "Family Support Centers in the Northeast region";
               } else if (se == true) {
-                document.getElementById('neFamilySupport').style.display = "none";
-                document.getElementById('seFamilySupport').style.display = "block";
-                document.getElementById('meFamilySupport').style.display = "none";
-                document.getElementById('cwFamilySupport').style.display = "none";
                 neAO.removeFrom(mymap);
                 seAO.removeFrom(mymap);
                 meAO.removeFrom(mymap);
@@ -333,16 +288,8 @@
                 seFS.addTo(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.removeFrom(mymap);
-                seSwath.addTo(mymap);
-                meSwath.removeFrom(mymap);
-                cwSwath.removeFrom(mymap);
                 document.getElementById('category').innerHTML = "Family Support Centers in the Southeast region";
               } else if (me == true) {
-                document.getElementById('neFamilySupport').style.display = "none";
-                document.getElementById('seFamilySupport').style.display = "none";
-                document.getElementById('meFamilySupport').style.display = "block";
-                document.getElementById('cwFamilySupport').style.display = "none";
                 neAO.removeFrom(mymap);
                 seAO.removeFrom(mymap);
                 meAO.removeFrom(mymap);
@@ -351,16 +298,8 @@
                 seFS.removeFrom(mymap);
                 meFS.addTo(mymap);
                 cwFS.removeFrom(mymap);
-                neSwath.removeFrom(mymap);
-                seSwath.removeFrom(mymap);
-                meSwath.addTo(mymap);
-                cwSwath.removeFrom(mymap);
                 document.getElementById('category').innerHTML = "Family Support Centers in the Metro region";
               } else {
-                document.getElementById('neFamilySupport').style.display = "none";
-                document.getElementById('seFamilySupport').style.display = "none";
-                document.getElementById('meFamilySupport').style.display = "none";
-                document.getElementById('cwFamilySupport').style.display = "block";
                 neAO.removeFrom(mymap);
                 seAO.removeFrom(mymap);
                 meAO.removeFrom(mymap);
@@ -369,14 +308,10 @@
                 seFS.removeFrom(mymap);
                 meFS.removeFrom(mymap);
                 cwFS.addTo(mymap);
-                neSwath.removeFrom(mymap);
-                seSwath.removeFrom(mymap);
-                meSwath.removeFrom(mymap);
-                cwSwath.addTo(mymap);
                 document.getElementById('category').innerHTML = "Family Support Centers in the Central/West region";
               };
             } else {
-              document.getElementById('selectRegion').style.display = "block";
+              //document.getElementById('selectRegion').style.display = "block";
             };
           }
 
