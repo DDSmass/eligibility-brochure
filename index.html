@@ -13,7 +13,7 @@
     <script src="js/metro.js"></script>
     <script src="js/centralwest.js"></script>
   </head>
-  <body>
+  <body onresize="collapseCheck()">
     <div class="container">
       <div class="header">
         <h1 class="titleText">Your Guide to the DDS Eligibility Process</h1>
@@ -24,7 +24,7 @@
         <div class="divider desktop"></div>
         <div class="info">
           <h2 class="infoTitle collapsible">Overview</h2>
-          <div class="infoBody">
+          <div class="infoBody" id="overview">
             <p>To access DDS services, you must apply for eligibility. Once eligibility has been determined, you may get DDS services.</p>
             <p>Applying for eligibility is a choice and we believe that it is important for applicants to fully understand the criteria for eligibility as well as the type of documentation that is required to enable DDS to make such an important decision. Therefore, included in the new application are the criteria for eligibility and explicit instructions about the necessary documentation.</p>
             <p>Another important component is legal authorization to proceed with the process. Applicants must give their written permission so that DDS can proceed with the eligibility process. This does not mean that an applicant cannot get help from a family member, friend, or agency. However if the applicant chooses to have someone assist them, they will also need to authorize that by signing a permission form.</p>
@@ -34,7 +34,7 @@
         </div>
         <div class="info">
           <h2 class="infoTitle collapsible">Eligibility Criteria</h2>
-          <div class="infoBody">
+          <div class="infoBody" id="eligCritera">
             <h3 class="infoSubHead">Adult Eligibilty Requirements</h3>
             <ol>
               <li>Persons who are 22 years of age or older are eligible for Intellectual Disability Supports provided, purchased, or arranged by the Department if the person:
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="mobileButtonDiv">
-          <button class="mobileButton mobile" type="button" onclick="location.href='https://ddsmass.github.io/eligibility-brochure/mobile-map.html'">Learn more about your region</button>
+          <button class="mobileButton mobile" type="button" onclick="location.href='mobile-map.html'">Learn more about your region</button>
         </div>
         <div class="navTextMobileDiv">
           <button type="button" class="navTextMobile mobile" onclick="location.href='https://www.mass.gov/lists/dds-eligibility-forms'">Go to the DDS Eligibility Application</button>
@@ -412,22 +412,22 @@
         </div>
         <div class="additionalInfo">
           <h2 class="infoTitle" id="moreInfo">More Information</h2>
-          <div class="additionalColumn" id="additionalResources">
+          <div class="additionalColumn">
               <h3 class="infoSubHead collapsible">Additional Resources</h3>
-              <div class="infoBody">
+              <div class="infoBody" id="additionalResources">
                 <p><a class="moreLink" href="https://www.mass.gov/lists/dds-eligibility-forms">Go to the DDS application</a></p>
                 <p><a class="moreLink" href="https://www.mass.gov/dds-turning-22-services">DDS Turning 22 Services</a></p>
                 <p><a class="moreLink" href="https://www.mass.gov/about-the-department-of-developmental-services">About the Department of Developmental Services</a></p>
                 <p><a class="moreLink" href="https://www.mass.gov/forms/contact-dds-online">Question? Comment? Submit it here</a></p>
-                <p><a class="moreLink desktop" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-adult-autism-spectrum-disorders/download">Eligibility Fact Sheet for Adult Autism Spectrum Disorders</a></p>
+                <p><a class="moreLink desktop" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-adult-autism-spectrum-disorders/download">Eligibility Fact Sheet for Adult ASD</a></p>
                 <p><a class="moreLink desktop" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-prader-willi-syndrome/download">Eligibility Fact Sheet for Prader‐Willi Syndrome</a></p>
                 <p><a class="moreLink desktop" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-smith-magenis-syndrome/download">Eligibility Fact Sheet for Smith‐Magenis Syndrome</a></p>
                 <p><a class="moreLink" href="https://www.mass.gov/doc/advisory-on-the-use-of-revisedupdated-testing-instruments-february-2012/download">Advisory On The Use of Revised/Updated Testing Instruments- February, 2012</a></p>
               </div>
             </div>
-          <div class="additionalColumn" id="printedCopy">
+          <div class="additionalColumn">
             <h3 class="infoSubHead collapsible">Printed Copies of this Information</h3>
-            <div class="infoBody">
+            <div class="infoBody" id="printedCopy">
               <p><a class="moreLink" href="https://www.mass.gov/doc/northeast-region-eligibility-brochure-0/download">Northeast Regional Brochure</a></p>
               <p><a class="moreLink" href="https://www.mass.gov/doc/southeast-regional-eligibility-brochure/download">Southeast Regional Brochure</a></p>
               <p><a class="moreLink" href="https://www.mass.gov/doc/metro-regional-eligibility-brochure/download">Metro Regional Brochure</a></p>
@@ -437,14 +437,14 @@
           <div class="additionalColumn mobile" id="eligibilityFactSheets">
             <h3 class="infoSubHead collapsible">Eligibility Fact Sheets</h3>
             <div class="infoBody">
-              <p><a class="moreLink" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-adult-autism-spectrum-disorders/download">Eligibility Fact Sheet for Adult Autism Spectrum Disorders</a></p>
+              <p><a class="moreLink" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-adult-autism-spectrum-disorders/download">Eligibility Fact Sheet for Adult ASD</a></p>
               <p><a class="moreLink" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-prader-willi-syndrome/download">Eligibility Fact Sheet for Prader‐Willi Syndrome</a></p>
               <p><a class="moreLink" href="https://www.mass.gov/doc/eligibility-fact-sheet-for-smith-magenis-syndrome/download">Eligibility Fact Sheet for Smith‐Magenis Syndrome</a></p>
             </div>
           </div>
         </div>
       </div>
-        <!--<button type="button" onclick="variableCheck()">Variable Check</button>-->
+      <button type="button" onclick="variableCheck()">Variable Check</button>
     </div>
     <script>
 
@@ -970,6 +970,23 @@
         };
       }
 
+      var width;
+
+      function collapseCheck() {
+        width = window.innerWidth;
+        if (width < 768) {
+          document.getElementById('overview').style.display = "none";
+          document.getElementById('eligCritera').style.display = "none";
+          document.getElementById('additionalResources').style.display = "none";
+          document.getElementById('printedCopy').style.display = "none";
+        } else {
+          document.getElementById('overview').style.display = "block";
+          document.getElementById('eligCritera').style.display = "block";
+          document.getElementById('additionalResources').style.display = "block";
+          document.getElementById('printedCopy').style.display = "block";
+        }
+      }
+
       var coll = document.getElementsByClassName('collapsible')
       var i;
 
@@ -986,7 +1003,8 @@
       }
 
       function variableCheck() {
-        console.log(`ne = ${ne}, se = ${se}, me = ${me}, cw = ${cw}, region = ${region}, ao = ${ao}, fs = ${fs}`);
+        // var width = window.innerWidth;
+        console.log(`ne = ${ne}, se = ${se}, me = ${me}, cw = ${cw}, region = ${region}, ao = ${ao}, fs = ${fs}, width = ${width}`);
       }
 
     </script>
