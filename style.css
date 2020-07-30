@@ -1179,6 +1179,8 @@ li{
     display: none;
     overflow: hidden;
     background-color: #f2f2f2;
+		width: 84vw;
+		/* margin-right: 6vw; */
   }
 
   .infoTitle{
