@@ -41,7 +41,7 @@ html, body, #regionsMap {
 
 #mapButtonsDiv{
   position: absolute;
-  top: 58vh;
+  bottom: 20px;
   left: 0;
   z-index: 2;
   width: 200px;
