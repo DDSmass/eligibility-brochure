@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.js"></script>
     <script src="js/northeast.js"></script>
     <script src="js/southeast.js"></script>
     <script src="js/metro.js"></script>
@@ -161,7 +160,7 @@
               <h3>Charles River West Area Office</h3>
               <i>255 Elm Street - Ste. 205 | Somerville, MA 02144 | (617) 623-5950</i>
               <p><b>Serves the following communities: </b>Belmont | Cambridge | Somerville | Waltham | Watertown</p>
-              <h3>Greater Boston Area Office</h3>
+              <h3>Metro Boston Area Office</h3>
               <i>65 Sprague Street, Rear West | Hyde Park, MA 02136 | (617) 363-2900</i>
               <p><b>Serves the following communities: </b>Boston | Brookline | Chelsea | Revere | Winthrop</p>
               <h3>Middlesex West Area Office</h3>
@@ -298,7 +297,7 @@
                 <h4>Cambridge Family and Children’s Service</h4>
                 <p>60 Gore Street, Cambridge, MA 02141 | (617) 876-4210 x 4259</p>
                 <a href="https://www.helpfamiles.org" target="_blank">www.helpfamiles.org</a>
-                <h3>Greater Boston Area</h3>
+                <h3>Metro Boston Area</h3>
                 <h4>Bay Cove Family Support Center</h4>
                 <p>66 Canal Street, Boston, MA 02114 | (617) 371-3121</p>
                 <a href="https://www.baycove.org" target="_blank">www.baycove.org</a>
@@ -562,7 +561,7 @@
         charlesRiverAO = L.marker([42.3956193,-71.1238772],{icon:aoIcon}).bindPopup("<p><b>Charles River West Area Office</b></p><p>255 Elm Street , Suite 205 | Somerville, MA 02144</p>"),
         fallRiverAO = L.marker([41.6838798,-71.1387461],{icon:aoIcon}).bindPopup("<p><b>Fall River Area Office</b></p><p>1 Father DeValles Blvd, Suite 203 | Fall River, MA 02723</p>"),
         franklinAO = L.marker([42.3166537,-72.6339583],{icon:aoIcon}).bindPopup("<p><b>Franklin/Hampshire Area Office</b></p><p>One Roundhouse Plaza, Suite 204 | Northampton, MA 01060</p>"),
-        greaterBostonAO = L.marker([42.235573,-71.1438839],{icon:aoIcon}).bindPopup("<p><b>Greater Boston Area Office</b></p><p>65 Sprague St | Hyde Park, MA 02136</p>"),
+        metroBostonAO = L.marker([42.235573,-71.1438839],{icon:aoIcon}).bindPopup("<p><b>Metro Boston Area Office</b></p><p>65 Sprague St | Hyde Park, MA 02136</p>"),
         holyokeAO = L.marker([42.2086457,-72.6092829],{icon:aoIcon}).bindPopup("<p><b>Holyoke/Chicopee Area Office</b></p><p>113 Hampden Street | Holyoke, MA 01040</p>"),
         lowellAO = L.marker([42.628417,-71.360967],{icon:aoIcon}).bindPopup("<p><b>Lowell Area Office</b></p><p>55 Technology Dr. #202 | Lowell, MA 01851</p>"),
         merrimackValleyAO = L.marker([42.7029002,-71.1526664],{icon:aoIcon}).bindPopup("<p><b>Merrimack Valley Area Office</b></p><p>280 Merrimack Street, 3rd Floor | Lawrence, MA 01843</p>"),
@@ -582,7 +581,7 @@
 
       var neAO = L.layerGroup([centralMiddlesexAO,lowellAO,merrimackValleyAO,metroNorthAO,northShoreAO]),
         seAO = L.layerGroup([brocktonAO,capeCodAO,fallRiverAO,newBedfordAO,plymouthAO,southCoastalAO,tauntonAO]),
-        meAO = L.layerGroup([charlesRiverAO,greaterBostonAO,middlesexWestAO,newtonAO]),
+        meAO = L.layerGroup([charlesRiverAO,metroBostonAO,middlesexWestAO,newtonAO]),
         cwAO = L.layerGroup([berkshireAO,franklinAO,holyokeAO,northCentralAO,svMilfordAO,svSouthbridgeAO,springfieldAO,worcesterAO]);
 
       var riversideFS = L.marker([42.4966532,-71.1301514],{icon:fsIcon}).bindPopup("<p><b>Riverside Community Care – Riverside Family Support Center</b></p><p>300 West Cummings Park, Suite 354 | Woburn, MA 01801</p>"),
