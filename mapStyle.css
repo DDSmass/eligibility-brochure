@@ -41,7 +41,7 @@ html, body, #regionsMap {
 
 #mapButtonsDiv{
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 0;
   z-index: 2;
   width: 200px;
@@ -55,6 +55,11 @@ html, body, #regionsMap {
   height: 34px;
   width: 175px;
   min-width: 0;
+}
+
+.arrow{
+  font-family: Poppins;
+  font-weight: 600;
 }
 
 .viewInfo{
